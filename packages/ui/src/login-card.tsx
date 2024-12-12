@@ -1,12 +1,25 @@
 import "./styles.css";
 
-const LoginCard = () => {
+const LoginCard = ({ country }: { country: string }) => {
+  console.log("country", country);
   return (
     <div className="form-container">
       <div className="form-card">
         <h1 className="login-title">Login</h1>
         <p className="login-subtitle">
           Welcome to <span>Operations UI App</span>
+        </p>
+        {/* <p className="login-subtitle">
+          This is the website for <span>{country}</span>
+        </p> */}
+        <p>
+          {country === "DE"
+            ? "This is the website for Germany"
+            : country === "CH"
+              ? "This is the website for Switzerland"
+              : country === "AT"
+                ? "This is the website for Austria"
+                : "Welcome!"}
         </p>
         <form>
           <div className="form-group">
