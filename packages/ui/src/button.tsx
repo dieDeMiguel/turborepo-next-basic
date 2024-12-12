@@ -1,19 +1,20 @@
 "use client";
 
-import React from "react";
-import "./styles.css";
+import { ReactNode } from "react";
 
 interface ButtonProps {
-  type: "submit" | "button";
-  children: React.ReactNode;
+  children: ReactNode;
+  className?: string;
+  appName: string;
 }
 
-const Button = ({ type, children }: ButtonProps) => {
+export const Button = ({ children, className, appName }: ButtonProps) => {
   return (
-    <button type={type} className="login-button">
+    <button
+      className={className}
+      onClick={() => alert(`Hello from your ${appName} app!`)}
+    >
       {children}
     </button>
   );
 };
-
-export default Button;

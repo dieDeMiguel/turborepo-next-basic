@@ -1,4 +1,3 @@
-import Button from "./button.js";
 import "./styles.css";
 
 const RegisterCard = ({ country }: { country: string }) => {
@@ -43,7 +42,9 @@ const RegisterCard = ({ country }: { country: string }) => {
               rows={3}
             />
           </div>
-          <Button type="submit">Register</Button>
+          <button type="submit" className="login-button">
+            Register
+          </button>
         </form>
       </div>
     </div>

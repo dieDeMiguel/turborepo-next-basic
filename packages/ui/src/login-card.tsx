@@ -1,4 +1,3 @@
-import Button from "./button.js";
 import "./styles.css";
 
 const LoginCard = () => {
@@ -32,7 +31,9 @@ const LoginCard = () => {
               className="form-input"
             />
           </div>
-          <Button type="submit">Login</Button>
+          <button type="submit" className="login-button">
+            Login
+          </button>
         </form>
       </div>
     </div>
