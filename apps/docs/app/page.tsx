@@ -1,11 +1,11 @@
 import styles from "./page.module.css";
-import RegisterCard from "@repo/ui/register-card";
+import LoginCard from "@repo/ui/login-card";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <RegisterCard />
+        <LoginCard />
       </main>
     </div>
   );

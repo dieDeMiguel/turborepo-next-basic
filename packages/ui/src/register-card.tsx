@@ -1,12 +1,23 @@
 import "./styles.css";
 
-const RegisterCard = () => {
+const RegisterCard = ({ country }: { country: string }) => {
   return (
     <div className="form-container">
       <div className="form-card">
         <h1 className="login-title">Personal info</h1>
         <p className="login-subtitle">
           Welcome to <span>Customer UI App</span>
+        </p>
+        <p className="login-subtitle">
+          {country === "DE"
+            ? "This is the website for Germany"
+            : country === "CH"
+              ? "This is the website for Switzerland"
+              : country === "AT"
+                ? "This is the website for Austria"
+                : country === "UK"
+                  ? "This is the website for United Kingdom"
+                  : "Welcome!"}
         </p>
         <form>
           <div className="form-group">

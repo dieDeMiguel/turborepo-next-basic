@@ -1,8 +1,8 @@
-import LoginCard from "@repo/ui/login-card";
 import styles from "./page.module.css";
 import { cookies } from "next/headers";
 
 import { FC, Suspense } from "react";
+import RegisterCard from "@repo/ui/register-card";
 
 const Home: FC = async () => {
   const cookieStore = await cookies();
@@ -12,7 +12,7 @@ const Home: FC = async () => {
     <div className={styles.page}>
       <main className={styles.main}>
         <Suspense fallback="Loading...">
-          <LoginCard country={country} />
+          <RegisterCard country={country} />
         </Suspense>
       </main>
     </div>
