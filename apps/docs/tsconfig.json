@@ -5,7 +5,11 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "baseUrl": ".", 
+    "paths": {      
+      "@/*": ["./*"]
+    }
   },
   "include": [
     "**/*.ts",
@@ -13,7 +17,7 @@
     "next-env.d.ts",
     "next.config.js",
     ".next/types/**/*.ts"
-, "../web/middleware.ts"  ],
+, "../../packages/ui/src/button.tsx"  ],
   "exclude": [
     "node_modules"
   ]
