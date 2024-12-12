@@ -15,7 +15,7 @@ const RegisterCard = ({ country }: { country: string }) => {
               ? "This is the website for Switzerland"
               : country === "AT"
                 ? "This is the website for Austria"
-                : country === "UK"
+                : country === "GB"
                   ? "This is the website for United Kingdom"
                   : "Welcome!"}
         </p>
