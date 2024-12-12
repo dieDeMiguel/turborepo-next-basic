@@ -2,10 +2,12 @@ import "./styles.css";
 
 const RegisterCard = () => {
   return (
-    <div className="login-container">
-      <div className="login-card">
+    <div className="form-container">
+      <div className="form-card">
         <h1 className="login-title">Personal info</h1>
-        <p className="login-subtitle">Welcome to Customer UI App</p>
+        <p className="login-subtitle">
+          Welcome to <span>Customer UI App</span>
+        </p>
         <form>
           <div className="form-group">
             <label htmlFor="name" className="form-label">

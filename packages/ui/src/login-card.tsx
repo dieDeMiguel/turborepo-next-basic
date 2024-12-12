@@ -2,10 +2,12 @@ import "./styles.css";
 
 const LoginCard = () => {
   return (
-    <div className="login-container">
-      <div className="login-card">
+    <div className="form-container">
+      <div className="form-card">
         <h1 className="login-title">Login</h1>
-        <p className="login-subtitle">Welcome to Operations UI App</p>
+        <p className="login-subtitle">
+          Welcome to <span>Operations UI App</span>
+        </p>
         <form>
           <div className="form-group">
             <label htmlFor="email" className="form-label">
