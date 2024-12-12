@@ -5,7 +5,7 @@ const LoginCard = () => {
     <div className="login-container">
       <div className="login-card">
         <h1 className="login-title">Login</h1>
-        <p className="login-subtitle">Welcome to Customer UI App</p>
+        <p className="login-subtitle">Welcome to Operations UI App</p>
         <form>
           <div className="form-group">
             <label htmlFor="email" className="form-label">
