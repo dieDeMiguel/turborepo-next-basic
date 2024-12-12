@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@repo/ui": "workspace:*",
-    "next": "^15.0.0",
+    "@vercel/functions": "^1.5.1",
+    "next": "^15.1.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
