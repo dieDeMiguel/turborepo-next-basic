@@ -1,6 +1,5 @@
 import styles from "./page.module.css";
 import { cookies } from "next/headers";
-
 import { FC, Suspense } from "react";
 import RegisterCard from "@repo/ui/register-card";
 
