@@ -1,4 +1,5 @@
 import "./styles.css";
+import { Button } from "@repo/ui/button";
 
 const RegisterCard = ({ country }: { country: string }) => {
   return (
@@ -40,11 +41,16 @@ const RegisterCard = ({ country }: { country: string }) => {
               placeholder="Summary your work experience"
               className="form-input"
               rows={3}
+              style={{ resize: "none" }}
             />
           </div>
-          <button type="submit" className="login-button">
-            Register
-          </button>
+          <Button
+            type="submit"
+            className="login-button"
+            appName="Customer UI App"
+          >
+            Click me to Register!
+          </Button>
         </form>
       </div>
     </div>

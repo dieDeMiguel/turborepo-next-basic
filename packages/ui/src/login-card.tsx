@@ -1,4 +1,5 @@
 import "./styles.css";
+import { Button } from "@repo/ui/button";
 
 const LoginCard = () => {
   return (
@@ -31,9 +32,13 @@ const LoginCard = () => {
               className="form-input"
             />
           </div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
+          <Button
+            type="submit"
+            className="login-button"
+            appName="Operations UI App"
+          >
+            Click me to Login!
+          </Button>
         </form>
       </div>
     </div>
