@@ -8,14 +8,13 @@ interface NextRequest extends OriginalNextRequest {
 }
 
 export function middleware(request: NextRequest) {
-  // Check if running locally (localhost or custom dev domain)
   const isLocal = request.nextUrl.hostname === 'localhost';
 
-  // Mock the country for local development
   const country = isLocal ? 'DE' : request.geo?.country || 'unknown';
 
   const response = NextResponse.next();
-  response.headers.set('x-country', country);
+
+  response.cookies.set('x-country', country, { path: '/' });
 
   return response;
 }

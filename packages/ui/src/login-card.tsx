@@ -1,7 +1,7 @@
 import "./styles.css";
 
 const LoginCard = ({ country }: { country: string }) => {
-  console.log("country", country);
+  console.log("LoginCard country", country);
   return (
     <div className="form-container">
       <div className="form-card">
@@ -12,7 +12,7 @@ const LoginCard = ({ country }: { country: string }) => {
         {/* <p className="login-subtitle">
           This is the website for <span>{country}</span>
         </p> */}
-        <p>
+        <p className="login-subtitle">
           {country === "DE"
             ? "This is the website for Germany"
             : country === "CH"
