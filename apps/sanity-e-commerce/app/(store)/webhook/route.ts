@@ -12,53 +12,45 @@ export async function POST(req: NextRequest) {
   const sig = headersList.get('stripe-signature');
 
   if (!sig) {
-    return NextResponse.json({ error: 'No signature' }, { status: 400 })
+    return NextResponse.json({ error: 'No signature' }, { status: 400 });
   }
 
-  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!webhookSecret) {
-    console.log('Stripe webhook secret is not set.')
+    console.log('Stripe webhook secret is not set.');
     return NextResponse.json(
       { error: 'Stripe webhook secret is not set' },
       { status: 400 }
-    )
+    );
   }
 
-  let event: Stripe.Event
+  let event: Stripe.Event;
 
   try {
-    event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
+    event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
   } catch (err) {
-    console.error('Webhook signature verification failed:', err)
+    console.error('Webhook signature verification failed:', err);
     return NextResponse.json(
       { error: `Webhook Error: ${err}` },
       { status: 400 }
-    )
+    );
   }
 
   if (event.type === 'checkout.session.completed') {
-    const session = event.data.object as Stripe.Checkout.Session
+    const session = event.data.object as Stripe.Checkout.Session;
     try {
-      const order = await createOrderInSanity(session)
-      return order;
-
-      // const mailToSend = {
-      //   to: session.metadata?.customerEmail as string,
-      //   subject: 'Order confirmation',
-      //   text: `Your order has been received. Order number: ${order.orderNumber}`,
-      // }
-
-     //  await sendOrderConfirmationEmail({ mailToSend })
+      const order = await createOrderInSanity(session);
+      return NextResponse.json(order, { status: 201 });
     } catch (err) {
-      console.error('Error creating order in Sanity:', err)
+      console.error('Error creating order in Sanity:', err);
       return NextResponse.json(
         { error: 'Error creating order' },
         { status: 500 }
-      )
+      );
     }
   }
 
-  return NextResponse.json({ received: true })
+  return NextResponse.json({ received: true });
 
   async function createOrderInSanity(session: Stripe.Checkout.Session) {
     const {
@@ -69,17 +61,17 @@ export async function POST(req: NextRequest) {
       payment_intent,
       customer,
       total_details,
-    } = session
+    } = session;
 
     const { orderNumber, customerName, customerEmail, clerkUserId } =
-      metadata as Metadata
+      metadata as Metadata;
 
     const lineItemsWithProduct = await stripe.checkout.sessions.listLineItems(
       id,
       {
         expand: ['data.price.product'],
       }
-    )
+    );
 
     const sanityProducts = lineItemsWithProduct.data.map((item) => ({
       _key: crypto.randomUUID(),
@@ -88,10 +80,8 @@ export async function POST(req: NextRequest) {
         _ref: (item.price?.product as Stripe.Product)?.metadata?.id,
       },
       quantity: item.quantity || 0,
-    }))
-    console.log('id:', id);
-    console.log('customer:', customer); 
-    console.log('orderNumber:', orderNumber);
+    }));
+
     const order = await backendClient.create({
       _type: 'order',
       orderNumber,
@@ -111,6 +101,6 @@ export async function POST(req: NextRequest) {
       orderDate: new Date().toISOString(),
     });
 
-    return order
+    return order;
   }
 }

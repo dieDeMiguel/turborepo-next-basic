@@ -67,7 +67,7 @@ importers:
         specifier: ^1.1.0
         version: 1.1.1(@types/react@18.3.1)(react@19.0.0-rc-66855b96-20241106)
       '@sanity/icons':
-        specifier: ^3.5.0
+        specifier: ^3.5.2
         version: 3.5.2(react@19.0.0-rc-66855b96-20241106)
       '@sanity/image-url':
         specifier: ^1.1.0
@@ -112,7 +112,7 @@ importers:
         specifier: 19.0.0-rc-66855b96-20241106
         version: 19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106)
       sanity:
-        specifier: ^3.65.1
+        specifier: ^3.67.1
         version: 3.67.1(@emotion/is-prop-valid@1.2.2)(@types/node@20.17.6)(@types/react@18.3.1)(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)(styled-components@6.1.13(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106))
       stripe:
         specifier: ^17.4.0
