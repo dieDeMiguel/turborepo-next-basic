@@ -17,10 +17,55 @@ export const orderType = defineType({
       type: "string",
     }),
     defineField({
+      name: "stripePaymentIntentId",
+      title: "Stripe Payment Intent ID",
+      type: "string",
+    }),
+    defineField({
       name: "stripeCustomerId",
       title: "Stripe Customer ID",
       type: "string",
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "customerName",
+      title: "Customer Name",
+      type: "string",
+    }),
+    defineField({
+      name: "clerkUserId",
+      title: "Clerk User ID",
+      type: "string",
+    }),
+    defineField({
+      name: "email",
+      title: "Email",
+      type: "string",
+    }),
+    defineField({
+      name: "currency",
+      title: "Currency",
+      type: "string",
+    }),
+    defineField({
+      name: "amountDiscount",
+      title: "Amount Discount",
+      type: "number",
+    }),
+    defineField({
+      name: "totalPrice",
+      title: "Total Price",
+      type: "number",
+    }),
+    defineField({
+      name: "status",
+      title: "Status",
+      type: "string",
+    }),
+    defineField({
+      name: "orderDate",
+      title: "Order Date",
+      type: "datetime",
     }),
     defineField({
       name: "items",

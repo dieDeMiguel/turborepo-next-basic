@@ -91,7 +91,16 @@ export type Order = {
   _rev: string;
   orderNumber?: string;
   stripeCheckoutSessionId?: string;
+  stripePaymentIntentId?: string;
   stripeCustomerId?: string;
+  customerName?: string;
+  clerkUserId?: string;
+  email?: string;
+  currency?: string;
+  amountDiscount?: number;
+  totalPrice?: number;
+  status?: string;
+  orderDate?: string;
   items?: Array<{
     product?: {
       _ref: string;
@@ -293,6 +302,40 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageMetadata;
 export declare const internalGroqTypeReferenceTo: unique symbol;
+// Source: ./sanity/lib/orders/getMyOrders.ts
+// Variable: MY_ORDERS_QUERY
+// Query: *[_type == "order" && clerkUserId == $userId] | order(orderDate desc) {        ...,        products[]{          ...,          product->        }      }
+export type MY_ORDERS_QUERYResult = Array<{
+  _id: string;
+  _type: 'order';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  orderNumber?: string;
+  stripeCheckoutSessionId?: string;
+  stripePaymentIntentId?: string;
+  stripeCustomerId?: string;
+  customerName?: string;
+  clerkUserId?: string;
+  email?: string;
+  currency?: string;
+  amountDiscount?: number;
+  totalPrice?: number;
+  status?: string;
+  orderDate?: string;
+  items?: Array<{
+    product?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'product';
+    };
+    quantity?: number;
+    _key: string;
+  }>;
+  products: null;
+}>;
+
 // Source: ./sanity/lib/sales/getActiveSaleByCouponCode.ts
 // Variable: ACTIVE_SALE_BY_COUPON_QUERY
 // Query: *[            _type == "sale"            && isActive == true            && couponCode == $couponCode        ] | order(validFrom desc)[0]
@@ -589,15 +632,22 @@ export type PRODUCT_SEARCH_QUERYResult = Array<{
   stock?: number;
 }>;
 
+// Source: ./sanity/lib/pages/getPageBySlug.ts
+// Variable: PAGE_QUERY
+// Query: *[      _type == "page" && slug.current == $slug    ][0] {      title,      "slug": slug.current,      content[]{        ...,        _type == "image" => {          ...,          "alt": alt,          "caption": caption        }      }    }
+export type PAGE_QUERYResult = null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
+    '\n      *[_type == "order" && clerkUserId == $userId] | order(orderDate desc) {\n        ...,\n        products[]{\n          ...,\n          product->\n        }\n      }\n    ': MY_ORDERS_QUERYResult;
     '\n        *[\n            _type == "sale"\n            && isActive == true\n            && couponCode == $couponCode\n        ] | order(validFrom desc)[0]\n    ': ACTIVE_SALE_BY_COUPON_QUERYResult;
     '\n    *[_type == "category"] | order(name asc)\n  ': ALL_CATEGORIES_QUERYResult;
     '\n    *[_type == "product"] | order(name asc)\n  ': ALL_PRODUCTS_QUERYResult;
     '\n        *[\n            _type == "product" && slug.current == $slug\n        ] | order(name asc)[0]\n    ': PRODUCT_BY_ID_QUERYResult;
     '\n    *[\n      _type == "product" &&\n      references(*[_type == "category" && slug.current == $categorySlug]._id)\n    ] | order(name asc)\n  ': PRODUCTS_BY_CATEGORY_QUERYResult;
     '\n        *[\n            _type == "product"\n            && name match $searchParam\n        ] | order(name asc)\n    ': PRODUCT_SEARCH_QUERYResult;
+    '\n    *[\n      _type == "page" && slug.current == $slug\n    ][0] {\n      title,\n      "slug": slug.current,\n      content[]{\n        ...,\n        _type == "image" => {\n          ...,\n          "alt": alt,\n          "caption": caption\n        }\n      }\n    }\n  ': PAGE_QUERYResult;
   }
 }
