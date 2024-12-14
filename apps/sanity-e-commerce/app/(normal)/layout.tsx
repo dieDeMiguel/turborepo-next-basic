@@ -6,6 +6,8 @@ import { SanityLive } from '@/sanity/lib/live';
 import { draftMode } from 'next/headers';
 import { DisableDraftMode } from '@/components/store/DisableDraftModeButton';
 import { VisualEditing } from 'next-sanity';
+import Header from '@/components/Header';
+import { ClerkProvider } from '@clerk/nextjs';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -36,34 +38,19 @@ export default async function RootLayout({
             <VisualEditing />
           </>
         )}
-        <Image
-          width="200"
-          height="135"
-          priority
-          className="fixed left-0 top-0 z-[-1] h-screen w-screen object-cover"
-          style={{ borderRadius: '8px' }}
-          src="/wood_bg.webp"
-          alt=""
-        />
-
-        <main className="page__wrapper bg-white px-5 py-6">{children}</main>
-
-        <section className="w-full overflow-hidden border-t border-solid border-t-black shadow-md">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2370.26157719655!2d9.924160212738071!3d53.553097859117806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b1858ff5d4109f%3A0xb33c6818ae0967ae!2sMottenkiste%20e.V.!5e0!3m2!1sen!2sde!4v1730537716459!5m2!1sen!2sde"
-            width="1280"
-            height="450"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          ></iframe>
-        </section>
-
-        <footer className="border-t border-solid border-t-black bg-white px-5 py-6">
-          <p className="text-center">Footer</p>
-        </footer>
-
+        <ClerkProvider
+          afterSignOutUrl={'/store'}
+          signInForceRedirectUrl={'/store'}
+          signUpForceRedirectUrl={'/store'}
+          afterSignInUrl={'/store'}
+          afterSignUpUrl={'/store'}
+          dynamic
+        >
+          <main>
+            <Header />
+            {children}
+          </main>
+        </ClerkProvider>
         <SanityLive />
       </body>
     </html>
