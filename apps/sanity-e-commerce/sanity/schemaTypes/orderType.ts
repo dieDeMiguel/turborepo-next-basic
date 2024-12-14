@@ -68,7 +68,7 @@ export const orderType = defineType({
       type: "datetime",
     }),
     defineField({
-      name: "items",
+      name: "products",
       title: "Items Purchased",
       type: "array",
       of: [
