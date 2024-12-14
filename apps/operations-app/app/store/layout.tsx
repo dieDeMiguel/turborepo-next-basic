@@ -1,11 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import '../globals.css';
-import { ClerkProvider } from '@clerk/nextjs';
 import { SanityLive } from '@/sanity/lib/live';
-import { draftMode } from 'next/headers';
-import { VisualEditing } from 'next-sanity';
-import { DisableDraftMode } from '@/components/store/DisableDraftModeButton';
 import Header from '@/components/store/Header';
 
 const geistSans = localFont({
@@ -30,22 +26,14 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider dynamic>
-      <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          {(await draftMode()).isEnabled && (
-            <>
-              <DisableDraftMode />
-              <VisualEditing />
-            </>
-          )}
-          <main>
-            <Header />
-            {children}
-          </main>
-          <SanityLive />
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <main>
+          <Header />
+          {children}
+        </main>
+        <SanityLive />
+      </body>
+    </html>
   );
 }

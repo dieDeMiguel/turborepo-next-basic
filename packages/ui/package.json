@@ -10,7 +10,8 @@
     "./styles": "./dist/styles.css",
     "./login-card": "./src/login-card.tsx",
     "./register-card": "./src/register-card.tsx",
-    "./styled-link": "./src/styled-link.tsx"
+    "./styled-link": "./src/styled-link.tsx",
+    "./input-field": "./src/input-field.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

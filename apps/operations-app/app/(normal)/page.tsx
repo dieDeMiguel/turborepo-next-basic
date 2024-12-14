@@ -1,5 +1,6 @@
 import BlackFridayBanner from '@/components/store/BlackFridayBanner';
 import ProductsView from '@/components/store/ProductsView';
+import { getAllOrders } from '@/sanity/lib/orders/getAllOrders';
 import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 
@@ -9,6 +10,8 @@ export const revalidate = 60;
 export default async function Page() {
   const products = await getAllProducts();
   const categories = await getAllCategories();
+  const orders = await getAllOrders();
+  console.log('orders', orders);
 
   return (
     <div>
