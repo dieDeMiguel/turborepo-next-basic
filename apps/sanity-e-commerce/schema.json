@@ -530,7 +530,7 @@
         },
         "optional": true
       },
-      "items": {
+      "products": {
         "type": "objectAttribute",
         "value": {
           "type": "array",

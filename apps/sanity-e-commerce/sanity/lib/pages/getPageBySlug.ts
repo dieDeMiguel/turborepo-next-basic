@@ -1,7 +1,9 @@
 import { defineQuery } from 'next-sanity'
 import { sanityFetch } from '../live'
+import { PageContent } from '@/types/types';
 
-export const getPageBySlug = async (slug: string) => {
+
+export const getPageBySlug = async (slug: string): Promise<PageContent | null> => {
   const PAGE_QUERY = defineQuery(`
     *[
       _type == "page" && slug.current == $slug
@@ -17,16 +19,16 @@ export const getPageBySlug = async (slug: string) => {
         }
       }
     }
-  `)
+  `);
 
   try {
     const page = await sanityFetch({
       query: PAGE_QUERY,
       params: { slug },
-    })
-    return page.data || null
+    });
+    return page.data ? (page.data as PageContent) : null;
   } catch (error) {
-    console.log('Error fetching the page content', error)
-    return null
+    console.log('Error fetching the page content', error);
+    return null;
   }
-}
+};

@@ -1,3 +1,4 @@
+import { BlockContent } from "@/sanity.types";
 
 export type Order = {
     orderNumber: string;
@@ -24,3 +25,8 @@ export type Order = {
     image: string;
   };
   
+  export type PageContent = {
+    title?: string;
+    slug: string;
+    content: BlockContent;
+  };
