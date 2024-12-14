@@ -52,7 +52,7 @@ export default function Header() {
 
             <SignedIn>
               <Link
-                href="/orders"
+                href="/store/orders"
                 className="relative flex flex-1 items-center justify-center space-x-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 sm:flex-none sm:justify-start"
               >
                 <PackageIcon className="h-6 w-6" />

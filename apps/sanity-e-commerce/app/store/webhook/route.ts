@@ -1,7 +1,7 @@
 import { Metadata } from '@/actions/createCheckoutSession'
 import { sendOrderConfirmationEmail } from '@/lib/mail'
 import stripe from '@/lib/stripe'
-import { backendClient } from '@/sanity/lib/backendClient'
+import { backendClient } from '@/sanity/lib/orders/backendClient'
 import { headers } from 'next/headers'
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
@@ -28,6 +28,7 @@ export async function POST(req: NextRequest) {
 
   try {
     event = stripe.webhooks.constructEvent(body, sig, webhookSecret)
+    console.log('Event constructed successfully:', event.id)
   } catch (err) {
     console.error('Webhook signature verification failed:', err)
     return NextResponse.json(
@@ -36,8 +37,10 @@ export async function POST(req: NextRequest) {
     )
   }
 
+
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object as Stripe.Checkout.Session
+    console.log('Checkout session completed:', session)
 
     try {
       const order = await createOrderInSanity(session)
@@ -49,7 +52,7 @@ export async function POST(req: NextRequest) {
         text: `Your order has been received. Order number: ${order.orderNumber}`,
       }
 
-      await sendOrderConfirmationEmail({ mailToSend })
+      // await sendOrderConfirmationEmail({ mailToSend })
     } catch (err) {
       console.error('Error creating order in Sanity:', err)
       return NextResponse.json(
@@ -72,6 +75,8 @@ export async function POST(req: NextRequest) {
       total_details,
     } = session
 
+    console.log('Creating order for session ID:', id)
+
     const { orderNumber, customerName, customerEmail, clerkUserId } =
       metadata as Metadata
 
@@ -90,6 +95,8 @@ export async function POST(req: NextRequest) {
       },
       quantity: item.quantity || 0,
     }))
+
+    console.log('Sanity products:', sanityProducts)
 
     const order = await backendClient.create({
       _type: 'order',
