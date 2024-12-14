@@ -1,5 +1,4 @@
-import { transporter } from "./nodemailer";
-
+import { transporter } from './nodemailer'
 
 type BodyProps = {
   to: string
