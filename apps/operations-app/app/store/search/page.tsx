@@ -3,7 +3,6 @@ import { searchOrdersByCustomerName } from '@/sanity/lib/orders/searchOrdersByCu
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ query: string }> }) {
   const { query } = await searchParams;
   const orders = await searchOrdersByCustomerName(query);
-  console.log('orders', orders);
   if (!orders.length) {
     return (
       <div className="justify-top flex min-h-screen flex-col items-center bg-gray-100 p-4">
@@ -18,7 +17,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
   return (
     <div className="justify-top flex min-h-screen flex-col items-center bg-gray-100 p-4">
       <div className="w-full max-w-6xl rounded-lg bg-white p-8 shadow-md">
-        <h1 className="mb-6 text-center text-3xl font-bold">Search results for "{query}"</h1>
+        <h1 className="mb-6 text-center text-3xl font-bold">Search results for: &quot;{query}&quot;</h1>
         <table className="min-w-full border bg-white">
           <thead>
             <tr>
