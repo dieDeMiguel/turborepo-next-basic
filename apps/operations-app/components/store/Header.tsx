@@ -16,7 +16,7 @@ export default function Header() {
           name="query"
           placeholder="Search for products"
         >
-          <InputField type="text" name="query" placeholder="Search for products" />
+          <InputField type="text" name="query" placeholder="Search order by name" />
         </Form>
         <div className="flex-items-center flex justify-center space-x-4"></div>
       </div>
