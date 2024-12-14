@@ -4,6 +4,7 @@ import { ClerkLoaded, SignedIn, SignInButton, UserButton, useUser } from '@clerk
 import Form from 'next/form';
 import { PackageIcon, TrolleyIcon } from '@sanity/icons';
 import useBasketStore from '@/app/store/store';
+import StyledLink from '@repo/ui/styled-link';
 
 export default function Header() {
   const { user } = useUser();
@@ -39,25 +40,17 @@ export default function Header() {
         </Form>
         <div className="flex-items-center flex justify-center space-x-4">
           <ClerkLoaded>
-            <Link
-              href="/store/basket"
-              className="relative flex flex-1 items-center justify-center space-x-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 sm:flex-none sm:justify-start"
-            >
+            <StyledLink href="/store/basket" label="My Basket">
               <TrolleyIcon className="h-6 w-6" />
               <span className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                 {itemCount}
               </span>
-              <span>My Basket</span>
-            </Link>
+            </StyledLink>
 
             <SignedIn>
-              <Link
-                href="/store/orders"
-                className="relative flex flex-1 items-center justify-center space-x-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 sm:flex-none sm:justify-start"
-              >
+              <StyledLink href="/store/orders" label="My Orders">
                 <PackageIcon className="h-6 w-6" />
-                <span>My Orders</span>
-              </Link>
+              </StyledLink>
             </SignedIn>
 
             {user ? (
