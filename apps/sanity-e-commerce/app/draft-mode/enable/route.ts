@@ -3,10 +3,10 @@
  * and query draft content and preview the content as it will appear once everything is published
  */
 import 'server-only';
-import { validatePreviewUrl } from '@sanity/preview-url-secret'
-import { client } from '@/sanity/lib/client'
-import { redirect } from 'next/navigation'
-import { draftMode } from 'next/headers'
+import { validatePreviewUrl } from '@sanity/preview-url-secret';
+import { client } from '@/sanity/lib/client';
+import { redirect } from 'next/navigation';
+import { draftMode } from 'next/headers';
 
 const token = process.env.SANITY_API_READ_TOKEN
 

@@ -9,7 +9,7 @@ async function BlackFridayBanner() {
   }
 
   return (
-    <div className="mx-4 mt-2 rounded-lg bg-gradient-to-r from-red-600 to-black px-6 py-10 text-white shadow-lg">
+    <div className="mx-4 mb-4 mt-2 rounded-lg bg-gradient-to-r from-red-600 to-black px-6 py-10 text-white shadow-lg">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex-1">
           <h3 className="mb-4 text-left text-3xl font-extrabold sm:text-5xl">{sale.title}</h3>
