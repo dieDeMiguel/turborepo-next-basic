@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with `create-next-app`.
+## Tech Stack
+
+This project uses the following technologies:
+
+- [Next.js](https://nextjs.org)
+- [Sanity](https://www.sanity.io/)
+- [Clerk](https://clerk.dev/)
+- [Strapi](https://strapi.io/)
+
+## Features
+
+- **Dynamic Imports**: Uses Next.js dynamic imports to load components asynchronously, improving performance. For example, the `BasketPage` is loaded dynamically in [page.tsx](app/\(store\)/product/%5Bslug%5D/page.tsx).
+- **Image Handling**: Utilizes Sanity's image URL builder to handle images efficiently. See `urlFor` for more details.
+- **State Management**: Manages the basket state using Zustand. Check out the `useBasketStore` hook.
+- **Custom Components**: Includes custom components like `AddToBasketButton`, `CategorySelectorComponent`, and `BlackFridayBanner`.
+- **Loading Indicators**: Displays a loading spinner using the `Loader` component.
+- **Sanity Integration**: Fetches and displays data from Sanity, including products and categories. See `getAllProducts` and `getAllCategories`.
+- **Middleware**: Uses Clerk middleware for authentication. See [middleware.ts](middleware.ts).
+- **Responsive Design**: Implements responsive design using Tailwind CSS. Check out the configuration in [tailwind.config.ts](tailwind.config.ts).
+- **Environment Configuration**: Manages environment variables using a custom utility in [env.ts](sanity/env.ts).
+- **Custom Hooks**: Includes custom hooks for various functionalities, such as fetching active sales by coupon code in `getActiveSaleByCouponCode`.
 
 ## Getting Started
 
-First, run the development server:
+To get started with this project, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository.
+2. Install dependencies with `npm install`.
+3. Run the development server with `npm run dev`.
 
-Open <http://localhost:3000> with your browser to see the result.
+## Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses `next/font` to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `dev`: Starts the development server.
+- `build`: Builds the project for production.
+- `start`: Starts the production server.
+- `lint`: Runs ESLint to check for code quality issues.
+- `typegen`: Generates TypeScript types from Sanity schemas.
