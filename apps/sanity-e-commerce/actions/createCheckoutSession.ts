@@ -1,8 +1,7 @@
 'use server'
 
-import { BasketItem } from '@/app/(store)/checkout/store'
+import { BasketItem } from '@/app/store/store'
 import stripe from '@/lib/stripe'
-
 import { imageUrl } from '@/sanity/lib/imageUrl'
 
 export type Metadata = {
@@ -44,18 +43,21 @@ export async function createCheckoutSession(
         ? `https://${process.env.VERCEL_URL}`
         : `${process.env.NEXT_PUBLIC_BASE_URL}`
 
-    const successUrl = `${baseUrl}/checkout/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`
+    const successUrl = `${baseUrl}/store/success?session_id={CHECKOUT_SESSION_ID}&orderNumber=${metadata.orderNumber}`
 
-    const cancelUrl = `${baseUrl}/basket`
+    const cancelUrl = `${baseUrl}/store/basket`
+
+    // console.log('SUCCESS URL:', successUrl)
+    // console.log('CANCEL URL:', cancelUrl)
 
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
-      customer_creation: customerId ? undefined : 'always', 
-      customer_email: !customerId ? metadata.customerEmail : undefined, 
+      customer_creation: customerId ? undefined : 'always', // create a new customer if not exists
+      customer_email: !customerId ? metadata.customerEmail : undefined, // only set email if creating a new customer
       metadata,
       mode: 'payment',
       allow_promotion_codes: true,
-      success_url: successUrl, 
+      success_url: successUrl, // will be prefilled by Stripe,
       cancel_url: cancelUrl,
       line_items: items.map((item) => ({
         price_data: {

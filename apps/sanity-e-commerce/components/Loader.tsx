@@ -1,3 +1,8 @@
-export default function Loader() {
-  return <div className="h-32 w-32 animate-spin rounded-full border-b-2 border-blue-500"></div>;
+function Loader() {
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <div className="animate-spin rounded-full size-32 border-b-2 border-blue-500" />
+    </div>
+  )
 }
+export default Loader
