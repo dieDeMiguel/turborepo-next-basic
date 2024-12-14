@@ -333,7 +333,11 @@ export type MY_ORDERS_QUERYResult = Array<{
     quantity?: number;
     _key: string;
   }>;
-  products: null;
+  products: Array<{
+    product: Product;
+    quantity?: number;
+    _key: string;
+  }>;
 }>;
 
 // Source: ./sanity/lib/sales/getActiveSaleByCouponCode.ts
