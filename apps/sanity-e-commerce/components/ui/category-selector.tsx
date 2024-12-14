@@ -60,7 +60,7 @@ export function CategorySelectorComponent({ categories }: CategorySelectorProps)
                   value={category.title}
                   onSelect={() => {
                     setValue(value === category._id ? '' : category._id);
-                    router.push(`/categories/${category.slug?.current}`);
+                    router.push(`/store/categories/${category.slug?.current}`);
                     setOpen(false);
                   }}
                 >
