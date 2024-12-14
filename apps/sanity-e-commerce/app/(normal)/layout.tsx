@@ -7,6 +7,7 @@ import { DisableDraftMode } from '@/components/store/DisableDraftModeButton';
 import { VisualEditing } from 'next-sanity';
 import { ClerkProvider } from '@clerk/nextjs';
 import Header from '@/components/store/Header';
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -43,6 +44,7 @@ export default async function RootLayout({
           <main className="page__wrapper bg-white px-5 py-6">{children}</main>
         </ClerkProvider>
         <SanityLive />
+        <Analytics />
       </body>
     </html>
   );
