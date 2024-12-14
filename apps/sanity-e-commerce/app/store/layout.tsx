@@ -1,10 +1,23 @@
 import type { Metadata } from 'next';
+import localFont from 'next/font/local';
 import '../globals.css';
+import { ClerkProvider } from '@clerk/nextjs';
 import HeaderStore from '@/components/store/HeaderStore';
 import { SanityLive } from '@/sanity/lib/live';
 import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity';
 import { DisableDraftMode } from '@/components/store/DisableDraftModeButton';
+
+const geistSans = localFont({
+  src: '../fonts/GeistVF.woff',
+  variable: '--font-geist-sans',
+  weight: '100 900',
+});
+const geistMono = localFont({
+  src: '../fonts/GeistMonoVF.woff',
+  variable: '--font-geist-mono',
+  weight: '100 900',
+});
 
 export const metadata: Metadata = {
   title: 'E-Commerce',
@@ -17,18 +30,22 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      {(await draftMode()).isEnabled && (
-        <>
-          <DisableDraftMode />
-          <VisualEditing />
-        </>
-      )}
-      <main>
-        <HeaderStore />
-        {children}
-      </main>
-      <SanityLive />
-    </>
+    <ClerkProvider dynamic>
+      <html lang="en">
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          {(await draftMode()).isEnabled && (
+            <>
+              <DisableDraftMode />
+              <VisualEditing />
+            </>
+          )}
+          <main>
+            {/* <HeaderStore /> */}
+            {children}
+          </main>
+          <SanityLive />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

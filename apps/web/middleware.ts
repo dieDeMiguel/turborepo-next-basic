@@ -9,8 +9,6 @@ export function middleware(request: NextRequest) {
 
   const geo = geolocation(request) || {};
 
-  console.log("Geolocation Data:", geo);
-
   const country = isLocal ? 'DE' : geo.country || 'unknown';
 
   response.cookies.set('x-country', country, {
