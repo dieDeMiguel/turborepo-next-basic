@@ -4,7 +4,7 @@ import { ClerkLoaded, SignedIn, SignInButton, UserButton, useUser } from '@clerk
 import Form from 'next/form';
 import { PackageIcon, TrolleyIcon } from '@sanity/icons';
 import useBasketStore from '@/app/store/store';
-import StyledLink from '@repo/ui/styled-link';
+import InputField from '@repo/ui/input-field';
 
 export default function Header() {
   const { user } = useUser();
@@ -31,26 +31,28 @@ export default function Header() {
           name="query"
           placeholder="Search for products"
         >
-          <input
-            type="text"
-            name="query"
-            placeholder="Search for products"
-            className="w-full max-w-4xl rounded border bg-gray-100 px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-          />
+          <InputField type="text" name="query" placeholder="Search for products" />
         </Form>
         <div className="flex-items-center flex justify-center space-x-4">
           <ClerkLoaded>
-            <StyledLink href="/store/basket" label="My Basket">
+            <Link
+              href="/store/basket"
+              className="relative flex flex-1 items-center justify-center space-x-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 sm:flex-none sm:justify-start"
+            >
               <TrolleyIcon className="h-6 w-6" />
               <span className="absolute -right-2 -top-2 flex size-5 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                 {itemCount}
               </span>
-            </StyledLink>
-
+              <span>My Basket</span>
+            </Link>
             <SignedIn>
-              <StyledLink href="/store/orders" label="My Orders">
+              <Link
+                href="/store/orders"
+                className="relative flex flex-1 items-center justify-center space-x-2 rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700 sm:flex-none sm:justify-start"
+              >
                 <PackageIcon className="h-6 w-6" />
-              </StyledLink>
+                <span>My Orders</span>
+              </Link>
             </SignedIn>
 
             {user ? (

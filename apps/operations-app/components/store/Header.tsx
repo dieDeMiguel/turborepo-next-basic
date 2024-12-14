@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
 import Form from 'next/form';
-import StyledLink from '@repo/ui/styled-link';
 import InputField from '@repo/ui/input-field';
 
 export default function Header() {
@@ -11,9 +10,6 @@ export default function Header() {
         <Link href="/" className="mx-auto cursor-pointer text-2xl font-bold text-blue-500 hover:opacity-50 sm:mx-0">
           Shopr Operations App
         </Link>
-        <StyledLink href="/" reload label="My Basket">
-          Refresh Data
-        </StyledLink>
         <Form
           action="/store/search"
           className="mt-2 w-full sm:mx-4 sm:mt-0 sm:w-auto sm:flex-1"
