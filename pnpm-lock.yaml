@@ -54,6 +54,9 @@ importers:
 
   apps/sanity-e-commerce:
     dependencies:
+      '@clerk/clerk-react':
+        specifier: ^5.20.2
+        version: 5.20.2(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       '@clerk/nextjs':
         specifier: ^6.0.2
         version: 6.9.1(next@15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
@@ -76,7 +79,7 @@ importers:
         specifier: ^6.24.1
         version: 6.24.1(debug@4.3.7)
       '@sanity/icons':
-        specifier: ^3.4.0
+        specifier: ^3.5.2
         version: 3.5.2(react@19.0.0-rc-02c0e824-20241028)
       '@sanity/image-url':
         specifier: ^1.1.0
@@ -860,8 +863,8 @@ packages:
     resolution: {integrity: sha512-xv+GFjSI/W00yhpR9XJCbGr6sxKGgKc/t0Zlj+D8Ky+M8M23GkapUOLHQR9DoCLlxWH39piRDzp/dJp+/W7yWQ==}
     engines: {node: '>=18.17.0'}
 
-  '@clerk/clerk-react@5.20.1':
-    resolution: {integrity: sha512-piVg+CKuKACQh63eBo0lARrhEjNNJd+nanSRHPTvw3DwBoP4AzsT2tsQJVuBP+H0hAPAtkm7Xp7S/sbtgVGdrw==}
+  '@clerk/clerk-react@5.20.2':
+    resolution: {integrity: sha512-mwuWGss1U+vrAyhAqy0vUBmE+dq8kW+5iPfl/wCGeFVvHJfG7IpemOQtUBY+G5Xp9gyWPdfBC6umMT5wz+bsPg==}
     engines: {node: '>=18.17.0'}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0 || ^19.0.0-0
@@ -887,8 +890,24 @@ packages:
       react-dom:
         optional: true
 
+  '@clerk/shared@2.20.2':
+    resolution: {integrity: sha512-d7TujIZCxgqRpspIUPqP8HsyyJ9jSCRKk9iDpZpDHNwmy6GQhmbY5bjV++J0sFMgsCiurwu0Qn0AYWKYDAz4Ww==}
+    engines: {node: '>=18.17.0'}
+    peerDependencies:
+      react: ^18.0.0 || ^19.0.0 || ^19.0.0-0
+      react-dom: ^18.0.0 || ^19.0.0 || ^19.0.0-0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
   '@clerk/types@4.39.3':
     resolution: {integrity: sha512-XliIv2Mq0lS4tnVQlzjc+Aa7EfBD06CE3Y8Oaw95Iv1+RY1qYL9uyz5FJsgCqMIWBCk7BnVhvp4zE4RaXHf8tA==}
+    engines: {node: '>=18.17.0'}
+
+  '@clerk/types@4.39.4':
+    resolution: {integrity: sha512-qBtCyTM6oHiFbAGo5hUUvl6INZJeX5ZKRWkIz3v3dNWYFp096nYWPjqv2RmoQCLkYJM7m5dnGWgBUa33xOVD3A==}
     engines: {node: '>=18.17.0'}
 
   '@codemirror/autocomplete@6.18.3':
@@ -7038,10 +7057,10 @@ snapshots:
       - react
       - react-dom
 
-  '@clerk/clerk-react@5.20.1(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)':
+  '@clerk/clerk-react@5.20.2(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)':
     dependencies:
-      '@clerk/shared': 2.20.1(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
-      '@clerk/types': 4.39.3
+      '@clerk/shared': 2.20.2(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
+      '@clerk/types': 4.39.4
       react: 19.0.0-rc-02c0e824-20241028
       react-dom: 19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028)
       tslib: 2.4.1
@@ -7049,7 +7068,7 @@ snapshots:
   '@clerk/nextjs@6.9.1(next@15.0.2(@babel/core@7.26.0)(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028))(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)':
     dependencies:
       '@clerk/backend': 1.21.1(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
-      '@clerk/clerk-react': 5.20.1(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
+      '@clerk/clerk-react': 5.20.2(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       '@clerk/shared': 2.20.1(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)
       '@clerk/types': 4.39.3
       crypto-js: 4.2.0
@@ -7071,7 +7090,23 @@ snapshots:
       react: 19.0.0-rc-02c0e824-20241028
       react-dom: 19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028)
 
+  '@clerk/shared@2.20.2(react-dom@19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028))(react@19.0.0-rc-02c0e824-20241028)':
+    dependencies:
+      '@clerk/types': 4.39.4
+      dequal: 2.0.3
+      glob-to-regexp: 0.4.1
+      js-cookie: 3.0.5
+      std-env: 3.8.0
+      swr: 2.2.5(react@19.0.0-rc-02c0e824-20241028)
+    optionalDependencies:
+      react: 19.0.0-rc-02c0e824-20241028
+      react-dom: 19.0.0-rc-02c0e824-20241028(react@19.0.0-rc-02c0e824-20241028)
+
   '@clerk/types@4.39.3':
+    dependencies:
+      csstype: 3.1.1
+
+  '@clerk/types@4.39.4':
     dependencies:
       csstype: 3.1.1
 
