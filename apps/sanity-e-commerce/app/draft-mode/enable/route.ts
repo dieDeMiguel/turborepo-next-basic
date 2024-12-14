@@ -2,7 +2,7 @@
  * This file is used to allow Presentation to set the app in Draft Mode, which will load Visual Editing
  * and query draft content and preview the content as it will appear once everything is published
  */
-
+import 'server-only';
 import { validatePreviewUrl } from '@sanity/preview-url-secret'
 import { client } from '@/sanity/lib/client'
 import { redirect } from 'next/navigation'

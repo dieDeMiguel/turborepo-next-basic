@@ -1,5 +1,5 @@
+import 'server-only'
 import { Metadata } from '@/actions/createCheckoutSession'
-import { sendOrderConfirmationEmail } from '@/lib/mail'
 import stripe from '@/lib/stripe'
 import { backendClient } from '@/sanity/lib/orders/backendClient'
 import { headers } from 'next/headers'
