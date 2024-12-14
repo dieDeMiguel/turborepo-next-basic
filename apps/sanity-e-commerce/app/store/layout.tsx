@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import '../globals.css';
 import { ClerkProvider } from '@clerk/nextjs';
-import HeaderStore from '@/components/store/HeaderStore';
 import { SanityLive } from '@/sanity/lib/live';
 import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity';

@@ -1,7 +1,9 @@
-import nodemailer from 'nodemailer'
+import nodemailer from 'nodemailer';
 
-const email = process.env.EMAIL
-const emailPass = process.env.EMAIL_PASS
+const email = process.env.EMAIL;
+const emailPass = process.env.EMAIL_PASS;
+console.log('email', email)
+console.log('emailPass', emailPass)
 
 if (!email || !emailPass) {
   throw new Error('Email credentials are not set for nodemailer')
