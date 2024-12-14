@@ -25,7 +25,7 @@ export default function Header() {
           Shopr
         </Link>
         <Form
-          action="/search"
+          action="/store/search"
           className="mt-2 w-full sm:mx-4 sm:mt-0 sm:w-auto sm:flex-1"
           name="query"
           placeholder="Search for products"
