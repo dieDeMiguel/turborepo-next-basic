@@ -1,27 +1,30 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
-import { CouponCode } from "./couponCodes";
+import { COUPON_CODES } from "./couponCodes";
 
-export const getActiveSaleByCouponCode = async (couponCode: CouponCode) => {
-    const ACTIVE_SALE_BY_COUPON_QUERY = defineQuery(`
-        *[
-            _type == "sale"
-            && isActive == true
-            && couponCode == $couponCode
-        ] | order(validFrom desc)[0]
-    `);
+export const getActiveSaleByCouponCode = async () => {
+  const ACTIVE_SALE_BY_COUPON_QUERY = defineQuery(`
+    *[
+      _type == "sale"
+      && isActive == true
+      && couponCode == $couponCode
+    ] | order(validFrom desc)[0]
+  `);
 
+  for (const couponCode of Object.values(COUPON_CODES)) {
     try {
-        const activeSale = await sanityFetch({
-            query: ACTIVE_SALE_BY_COUPON_QUERY,
-            params: {
-                couponCode, 
-            },
-        });
+      const activeSale = await sanityFetch({
+        query: ACTIVE_SALE_BY_COUPON_QUERY,
+        params: { couponCode },
+      });
 
-        return activeSale ? activeSale.data : null;
+      if (activeSale?.data) {
+        return activeSale.data;
+      }
     } catch (error) {
-        console.error("Error fetching active sale by coupon code:", error);
-        return null;
+      console.error(`Error fetching active sale for coupon code ${couponCode}:`, error);
     }
+  }
+
+  return null;
 };

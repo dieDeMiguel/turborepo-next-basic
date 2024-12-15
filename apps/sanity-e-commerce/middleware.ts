@@ -18,10 +18,9 @@ export default clerkMiddleware(async (auth, req) => {
   const response = NextResponse.next();
 
   const isLocal = req.nextUrl.hostname === 'localhost';
-  console.log('isLocal', isLocal);
 
   const geo = await geolocation(req) || {};
-  const countryCode = isLocal ? 'DE' : geo.country || 'unknown';
+  const countryCode = isLocal ? 'GB' : geo.country || 'unknown';
 
   const flag = countryFlags[countryCode] || '🌍'; 
   response.cookies.set('x-country', countryCode, {

@@ -29,13 +29,6 @@ export default async function Page() {
     <div className="min-h-screen bg-gray-100">
       <BlackFridayBanner />
       <div className="container mx-auto px-4 py-8">
-        <div className="mb-8 flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-md">
-          <h1 className="mb-4 text-4xl font-bold text-gray-800">Welcome!</h1>
-          <div className="flex items-center space-x-4">
-            <span className="text-5xl">{flagEmoji}</span>
-            <span className="text-2xl font-semibold text-gray-700">{countryName}</span>
-          </div>
-        </div>
         <ProductsView products={products} categories={categories} />
         <Suspense fallback={<div>Loading country info...</div>}>
           <div className="mt-8 flex items-center justify-center space-x-4">
