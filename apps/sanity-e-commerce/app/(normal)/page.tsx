@@ -7,7 +7,7 @@ import { cookies } from 'next/headers';
 import countriesData from '@/lib/countries.json';
 import { Suspense } from 'react';
 
-export const dynamic = 'force-static';
+export const dynamic = 'force-dynamic';
 export const revalidate = 60;
 
 const countries: Country[] = countriesData;
@@ -16,14 +16,14 @@ export default async function Page() {
   const [products, categories] = await Promise.all([getAllProducts(), getAllCategories()]);
 
   const cookieStore = await cookies();
-  console.log('cookieStore.get("x-country)?.value"', cookieStore.get('x-country')?.value);
   const countryCode = cookieStore.get('x-country')?.value || 'GB';
+  const flag = cookieStore.get('x-flag')?.value || '🇬🇧';
 
   const countryInfo =
     countries.find((country) => country.cca2 === countryCode) || countries.find((c) => c.cca2 === 'GB');
 
   const countryName = getCountryName(countryInfo);
-  const flagEmoji = countryInfo?.flag || '🇬🇧';
+  const flagEmoji = flag;
 
   return (
     <div className="min-h-screen bg-gray-100">

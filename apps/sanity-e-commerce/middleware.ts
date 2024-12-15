@@ -1,6 +1,7 @@
-
 import { NextResponse } from 'next/server';
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+import { geolocation } from '@vercel/functions';
+
 const countryFlags: Record<string, string> = {
   GB: '🇬🇧',
   AT: '🇦🇹',
@@ -15,12 +16,14 @@ export default clerkMiddleware(async (auth, req) => {
     await auth.protect();
   }
   const response = NextResponse.next();
+
   const isLocal = req.nextUrl.hostname === 'localhost';
+  console.log('isLocal', isLocal);
 
-  const geo = req.geo || {};
+  const geo = await geolocation(req) || {};
   const countryCode = isLocal ? 'DE' : geo.country || 'unknown';
-  const flag = countryFlags[countryCode] || '🌍';
 
+  const flag = countryFlags[countryCode] || '🌍'; 
   response.cookies.set('x-country', countryCode, {
     path: '/',
     httpOnly: true,
