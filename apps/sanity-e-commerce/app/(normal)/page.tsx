@@ -9,6 +9,7 @@ import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 // import { Suspense } from 'react';
 
 export const dynamic = 'force-static';
+
 // export const revalidate = 60;
 
 // const countries: Country[] = countriesData;
