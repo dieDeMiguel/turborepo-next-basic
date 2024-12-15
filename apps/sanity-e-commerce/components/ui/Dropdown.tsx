@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
 import { ChevronDown } from 'lucide-react';
-
 interface DropdownItem {
   label: string;
   href: string;

@@ -66,7 +66,7 @@ export interface DescriptionBlock {
   _type: string;
   style: string;
   _key: string;
-  markDefs: any[];
+  markDefs: unknown[];
   children: {
     _type: string;
     marks: string[];
