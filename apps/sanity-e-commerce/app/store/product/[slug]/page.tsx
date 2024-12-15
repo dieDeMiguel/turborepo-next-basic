@@ -57,7 +57,6 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
           )}
         </div>
 
-        {/* info  */}
         <div className="flex flex-col justify-between">
           <div>
             <h1 className="mb-4 text-3xl font-bold">{product.name}</h1>

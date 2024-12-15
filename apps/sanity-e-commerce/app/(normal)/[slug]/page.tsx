@@ -31,8 +31,6 @@ async function ContentPage({ params }: { params: Promise<{ slug: string }> }) {
     return notFound();
   }
 
-  // NEXT.JS 15 way of getting the params
-  // we are not using useParams to keep it server component
   return (
     <div className="prose mb-6 max-w-none">
       {Array.isArray(content?.content) && <PortableText value={content?.content} components={customComponents} />}
