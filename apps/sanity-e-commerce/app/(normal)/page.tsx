@@ -14,8 +14,8 @@ export default async function Page() {
     <div className="min-h-screen bg-gray-100">
       <BlackFridayBanner />
       <div className="container mx-auto px-4 py-8">
-        <ProductsView products={products} categories={categories} />
         {shouldShowCountry && <CountryInfo />}
+        <ProductsView products={products} categories={categories} />
         <FlagValues values={{ 'show-country': shouldShowCountry }} />
       </div>
     </div>
