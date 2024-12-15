@@ -16,6 +16,7 @@ export default async function Page() {
   const [products, categories] = await Promise.all([getAllProducts(), getAllCategories()]);
 
   const cookieStore = await cookies();
+  console.log('cookieStore.get("x-country)?.value"', cookieStore.get('x-country')?.value);
   const countryCode = cookieStore.get('x-country')?.value || 'GB';
 
   const countryInfo =

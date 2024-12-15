@@ -1,60 +1,46 @@
-// app/middleware.ts
+
 import { NextResponse } from 'next/server';
-import type { NextRequest, NextFetchEvent } from 'next/server';
-import { clerkMiddleware } from '@clerk/nextjs/server';
-import countries from './lib/countries.json';
-
-// Define the matcher to specify which paths the middleware should run on
-export const config = {
-  matcher: '/:path*', // Apply to all routes; adjust as needed
+import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
+const countryFlags: Record<string, string> = {
+  GB: '🇬🇧',
+  AT: '🇦🇹',
+  DE: '🇩🇪',
+  CH: '🇨🇭',
+  FR: '🇫🇷',
 };
+const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/forum(.*)']);
 
-// Combined Middleware Function
-export default async function middleware(request: NextRequest, event: NextFetchEvent) {
-  // Run Clerk's middleware first
-  const clerkResponse = await clerkMiddleware()(request, event);
-
-  // If Clerk's middleware returns a response (e.g., redirect to sign-in), return it immediately
-  if (clerkResponse) {
-    return clerkResponse;
+export default clerkMiddleware(async (auth, req) => {
+  if (isProtectedRoute(req)) {
+    await auth.protect();
   }
-
-  // Proceed with geolocation logic
   const response = NextResponse.next();
+  const isLocal = req.nextUrl.hostname === 'localhost';
 
-  // Determine if the request is from localhost
-  const isLocal = request.nextUrl.hostname === 'localhost';
+  const geo = req.geo || {};
+  const countryCode = isLocal ? 'DE' : geo.country || 'unknown';
+  const flag = countryFlags[countryCode] || '🌍';
 
-  // Extract geolocation data from Vercel headers
-  const countryCode = isLocal
-    ? 'GB' // Default to Great Britain in local development
-    : request.geo?.country || 'GB'; // Default to GB if not found
+  response.cookies.set('x-country', countryCode, {
+    path: '/',
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+  });
 
-  // Find country information from countries.json
-  const countryInfo = countries.find((country) => country.cca2 === countryCode);
-
-  // If country not found, default to Great Britain
-  const finalCountry = countryInfo || countries.find((c) => c.cca2 === 'GB');
-
-  // Extract flag
-  const flag = finalCountry?.flag || '🇬🇧';
-
-  if (finalCountry) {
-    // Set cookies with country and flag
-    response.cookies.set('x-country', finalCountry.cca2, {
-      path: '/',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-    });
-
-    response.cookies.set('x-flag', flag, {
-      path: '/',
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
-    });
-  }
+  response.cookies.set('x-flag', flag, {
+    path: '/',
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+  });
 
   return response;
-}
+});
+
+export const config = {
+  matcher: [
+    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
+    '/(api|trpc)(.*)',
+  ],
+};
