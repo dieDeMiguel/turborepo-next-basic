@@ -3,10 +3,9 @@ import ProductGrid from './ProductGrid';
 
 interface ProductsViewProps {
   products: Product[];
-  categories: Category[];
 }
 
-const ProductsView = ({ products, categories }: ProductsViewProps) => {
+const ProductsView = ({ products }: ProductsViewProps) => {
   return (
     <div className="flex flex-col">
       {/* products  */}
