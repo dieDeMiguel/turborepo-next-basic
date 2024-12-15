@@ -2,6 +2,7 @@ import BlackFridayBanner from '@/components/store/BlackFridayBanner';
 import ProductsView from '@/components/store/ProductsView';
 import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
+import { cookies } from 'next/headers';
 
 export const dynamic = 'force-static';
 export const revalidate = 60;
@@ -9,6 +10,9 @@ export const revalidate = 60;
 export default async function Page() {
   const products = await getAllProducts();
   const categories = await getAllCategories();
+  const cookieStore = await cookies();
+  const country = cookieStore.get('x-country')?.value || 'unknown';
+  console.log(`Country: ${country}`);
 
   return (
     <div>

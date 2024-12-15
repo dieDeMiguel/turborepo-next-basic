@@ -8,6 +8,7 @@ import { VisualEditing } from 'next-sanity';
 import { ClerkProvider } from '@clerk/nextjs';
 import Header from '@/components/store/Header';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -45,6 +46,7 @@ export default async function RootLayout({
         </ClerkProvider>
         <SanityLive />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
