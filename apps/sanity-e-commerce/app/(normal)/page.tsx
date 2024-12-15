@@ -4,6 +4,7 @@ import ProductsView from '@/components/store/ProductsView';
 import { showCountry } from '@/experiments/flags';
 import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
+import { FlagValues } from '@vercel/flags/react';
 
 export default async function Page() {
   const [products, categories] = await Promise.all([getAllProducts(), getAllCategories()]);
@@ -15,6 +16,7 @@ export default async function Page() {
       <div className="container mx-auto px-4 py-8">
         <ProductsView products={products} categories={categories} />
         {shouldShowCountry && <CountryInfo />}
+        <FlagValues values={{ 'show-country': shouldShowCountry }} />
       </div>
     </div>
   );
