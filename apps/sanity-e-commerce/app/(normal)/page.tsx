@@ -1,6 +1,5 @@
 import BlackFridayBanner from '@/components/store/BlackFridayBanner';
 import ProductsView from '@/components/store/ProductsView';
-import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 import { cookies } from 'next/headers';
 
