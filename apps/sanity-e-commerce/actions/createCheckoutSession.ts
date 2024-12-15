@@ -47,9 +47,6 @@ export async function createCheckoutSession(
 
     const cancelUrl = `${baseUrl}/store/basket`
 
-    // console.log('SUCCESS URL:', successUrl)
-    // console.log('CANCEL URL:', cancelUrl)
-
     const session = await stripe.checkout.sessions.create({
       customer: customerId,
       customer_creation: customerId ? undefined : 'always', // create a new customer if not exists
