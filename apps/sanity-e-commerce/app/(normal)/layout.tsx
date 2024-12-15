@@ -9,6 +9,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import Header from '@/components/store/Header';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { VercelToolbar } from '@vercel/toolbar/next';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -31,6 +32,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const shouldInjectToolbar = process.env.NODE_ENV === 'development';
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased`}>
@@ -43,6 +45,7 @@ export default async function RootLayout({
         <ClerkProvider dynamic>
           <Header />
           <main className="page__wrapper bg-white px-5 py-6">{children}</main>
+          {shouldInjectToolbar && <VercelToolbar />}
         </ClerkProvider>
         <SanityLive />
         <Analytics />

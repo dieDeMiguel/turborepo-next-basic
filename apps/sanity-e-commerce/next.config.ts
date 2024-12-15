@@ -1,14 +1,18 @@
 import type { NextConfig } from "next";
+import { createRequire } from 'module'; 
+
+const require = createRequire(import.meta.url);
+
+const withVercelToolbar = require('@vercel/toolbar/plugins/next')();
 
 const nextConfig: NextConfig = {
-  /* config options here */
   images: {
     remotePatterns: [
-     { 
-      hostname: 'cdn.sanity.io'
-    }
-    ]
-  }
+      { 
+        hostname: 'cdn.sanity.io',
+      },
+    ],
+  },
 };
 
-export default nextConfig;
+export default withVercelToolbar(nextConfig);

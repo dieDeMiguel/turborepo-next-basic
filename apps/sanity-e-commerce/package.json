@@ -27,6 +27,7 @@
     "@vercel/flags": "^2.6.3",
     "@vercel/functions": "^1.5.2",
     "@vercel/speed-insights": "^1.1.0",
+    "@vercel/toolbar": "^0.1.28",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
