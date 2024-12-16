@@ -15,7 +15,9 @@
         "SANITY_API_READ_TOKEN",
         "CLERK_SECRET_KEY",
         "EMAIL",
-        "EMAIL_PASS"
+        "EMAIL_PASS",
+        "FLAGS_SECRET",
+        "SHOW_COUNTRY"
       ]
     },
     "lint": {

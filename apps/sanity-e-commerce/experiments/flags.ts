@@ -5,7 +5,7 @@ export const showCountry = flag({
   decide: () => process.env.SHOW_COUNTRY === 'true',
 });
 
-export const showCategoryDropdown = flag({
-  key: 'show-category-dropdown',
+export const showAorB = flag({
+  key: 'show-a-or-b',
   decide: () => Math.random() > 0.5, // 50% chance to show
 });
