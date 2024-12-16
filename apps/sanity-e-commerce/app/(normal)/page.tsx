@@ -6,12 +6,12 @@ import { showCountry } from '@/experiments/flags';
 import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 import { FlagValues } from '@vercel/flags/react';
+import ProductGridSkeleton from '@/components/ui/skeleton';
 
 export const revalidate = 1800; // ISR: revalidate every 30 minutes
 
-const LoadingBanner = () => <div>Loading banner...</div>;
-const LoadingCountryInfo = () => <div>Loading country information...</div>;
-const LoadingProducts = () => <div>Loading products...</div>;
+const LoadingCountryInfo = () => <ProductGridSkeleton />;
+const LoadingProducts = () => <ProductGridSkeleton />;
 
 export default async function Page() {
   const [products, categories, shouldShowCountry] = await Promise.all([
@@ -22,9 +22,7 @@ export default async function Page() {
 
   return (
     <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg bg-gray-100 py-8">
-      <Suspense fallback={<LoadingBanner />}>
-        <BlackFridayBanner />
-      </Suspense>
+      <BlackFridayBanner />
       <div className="container mx-auto flex flex-col items-center justify-center px-4">
         {shouldShowCountry && (
           <Suspense fallback={<LoadingCountryInfo />}>
