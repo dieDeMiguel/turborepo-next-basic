@@ -6,6 +6,8 @@ import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 import { FlagValues } from '@vercel/flags/react';
 
+export const revalidate = 600;
+
 export default async function Page() {
   const [products, categories] = await Promise.all([getAllProducts(), getAllCategories()]);
   const shouldShowCountry = await showCountry();
