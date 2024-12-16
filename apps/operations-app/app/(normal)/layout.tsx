@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import '../globals.css';
 import { SanityLive } from '@/sanity/lib/live';
 import Header from '@/components/store/Header';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -31,6 +32,7 @@ export default async function RootLayout({
         <Header />
         <main className="page__wrapper bg-white px-5 py-6">{children}</main>
         <SanityLive />
+        <SpeedInsights />
       </body>
     </html>
   );
