@@ -24,11 +24,7 @@ export default async function Page() {
     <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg bg-gray-100 py-8">
       <BlackFridayBanner />
       <div className="container mx-auto flex flex-col items-center justify-center px-4">
-        {shouldShowCountry && (
-          <Suspense fallback={<LoadingCountryInfo />}>
-            <CountryInfo />
-          </Suspense>
-        )}
+        <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>
         <Suspense fallback={<LoadingProducts />}>
           <ProductsView products={products} categories={categories} />
         </Suspense>
