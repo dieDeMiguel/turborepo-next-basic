@@ -11,9 +11,9 @@ export default async function Page() {
   const shouldShowCountry = await showCountry();
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="mb-4 min-h-screen rounded-lg bg-gray-100 py-12">
       <BlackFridayBanner />
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto flex flex-col items-center justify-center px-4 py-8">
         {shouldShowCountry && <CountryInfo />}
         <ProductsView products={products} categories={categories} />
         <FlagValues values={{ 'show-country': shouldShowCountry }} />

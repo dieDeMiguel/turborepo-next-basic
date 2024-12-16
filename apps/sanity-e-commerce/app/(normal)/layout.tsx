@@ -41,10 +41,12 @@ export default async function RootLayout({
             <DisableDraftMode />
             <VisualEditing />
           </>
-        )}{' '}
+        )}
         <ClerkProvider dynamic>
-          <Header />
-          <main className="page__wrapper bg-white px-5 py-6">{children}</main>
+          <main className="page__wrapper bg-white px-5 pb-6">
+            <Header />
+            {children}
+          </main>
           {shouldInjectToolbar && <VercelToolbar />}
         </ClerkProvider>
         <SanityLive />

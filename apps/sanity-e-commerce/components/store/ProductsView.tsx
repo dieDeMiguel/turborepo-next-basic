@@ -9,17 +9,12 @@ interface ProductsViewProps {
 
 const ProductsView: React.FC<ProductsViewProps> = ({ products, categories }) => {
   return (
-    <div className="flex flex-col">
-      {/* Categories Dropdown */}
+    <div className="flex flex-col justify-center">
       <div className="mb-4 w-full sm:w-[200px]">
         <CategoryDropdown categories={categories} />
       </div>
-
-      {/* Products */}
       <div className="flex-1">
         <ProductGrid products={products} />
-
-        <hr className="mt-4 w-1/2 sm:w-3/4" />
       </div>
     </div>
   );
