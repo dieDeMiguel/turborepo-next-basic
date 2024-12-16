@@ -8,7 +8,7 @@ async function BlackFridayBanner() {
   }
 
   return (
-    <div className="to-cyan mx-4 mb-8 rounded-lg bg-gradient-to-r from-blue-600 px-6 py-10 text-white shadow-lg">
+    <div className="to-cyan mx-4 rounded-lg bg-gradient-to-r from-blue-600 px-6 py-10 text-white shadow-lg">
       <div className="container mx-auto flex items-center justify-between">
         <div className="flex-1">
           <h3 className="mb-4 text-left text-3xl font-extrabold sm:text-5xl">{sale.title}</h3>
