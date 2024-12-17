@@ -20,7 +20,7 @@ export default async function CountryInfo() {
 
   return (
     <Suspense fallback={<div>Loading country info...</div>}>
-      <div className="flex items-center justify-center space-x-4">
+      <div className="mb-4 flex items-center justify-center space-x-4 sm:mb-0">
         <span className="text-4xl">{flagEmoji}</span>
         <span className="text-xl font-medium text-gray-700">{countryName}</span>
       </div>
