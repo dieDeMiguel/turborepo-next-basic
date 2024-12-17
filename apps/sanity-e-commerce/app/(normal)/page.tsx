@@ -7,6 +7,7 @@ import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 import { FlagValues } from '@vercel/flags/react';
 import ProductGridSkeleton from '@/components/ui/skeleton';
+import { reportValue } from '@vercel/flags';
 
 export const revalidate = 1800; // ISR: revalidate every 30 minutes
 
@@ -19,6 +20,8 @@ export default async function Page() {
     getAllCategories(),
     showCountry(),
   ]);
+
+  reportValue('show-country', shouldShowCountry);
 
   return (
     <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg bg-gray-100 py-8">
