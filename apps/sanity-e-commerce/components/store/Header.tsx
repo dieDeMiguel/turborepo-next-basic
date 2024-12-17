@@ -11,13 +11,13 @@ export default function Header() {
 
   const itemCount = useBasketStore((state) => state.items.reduce((total, item) => total + item.quantity, 0));
 
-  const createClerkPasskey = async () => {
-    try {
-      await user?.createPasskey();
-    } catch (err) {
-      console.error('Error:', JSON.stringify(err, null, 2));
-    }
-  };
+  // const createClerkPasskey = async () => {
+  //   try {
+  //     await user?.createPasskey();
+  //   } catch (err) {
+  //     console.error('Error:', JSON.stringify(err, null, 2));
+  //   }
+  // };
 
   return (
     <header className="flex flex-wrap items-center justify-between px-4 py-2">
