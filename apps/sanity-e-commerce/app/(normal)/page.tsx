@@ -8,7 +8,7 @@ import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 import { FlagValues } from '@vercel/flags/react';
 import ProductGridSkeleton from '@/components/ui/skeleton';
 
-export const revalidate = 1800; // ISR: revalidate every 30 minutes
+export const revalidate = 3600; // ISR: revalidate every 60 minutes
 
 const LoadingCountryInfo = () => <ProductGridSkeleton />;
 const LoadingProducts = () => <ProductGridSkeleton />;
