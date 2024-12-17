@@ -7,7 +7,7 @@ export default async function Page() {
   const orders = await getAllOrders();
   return (
     <div className="container mx-auto p-4">
-      <h1 className="mb-4 text-2xl font-bold">Order List</h1>
+      <h1 className="mb-4 text-2xl font-bold">Orders List</h1>
       <table className="min-w-full border bg-white">
         <thead>
           <tr>
