@@ -27,6 +27,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased`}>
         <Header />
         <main className="page__wrapper bg-white px-5 py-6">{children}</main>
