@@ -15,14 +15,12 @@ const LoadingProducts = () => <ProductGridSkeleton />;
 
 export default async function Page() {
   try {
-    // Fetch data in parallel using Promise.allSettled for better error handling
     const [productsResult, categoriesResult, flagResult] = await Promise.allSettled([
       getAllProducts(),
       getAllCategories(),
       showCountry(),
     ]);
 
-    // Handle potential rejections individually
     const products = productsResult.status === 'fulfilled' ? productsResult.value : [];
     const categories = categoriesResult.status === 'fulfilled' ? categoriesResult.value : [];
     const shouldShowCountry = flagResult.status === 'fulfilled' ? flagResult.value : false;
@@ -35,7 +33,6 @@ export default async function Page() {
           <Suspense fallback={<LoadingProducts />}>
             <ProductsView products={products} categories={categories} />
           </Suspense>
-          {/* If FlagValues is necessary, ensure it's optimized */}
           <Suspense fallback={null}>
             <FlagValues values={{ 'show-country': shouldShowCountry }} />
           </Suspense>
@@ -44,7 +41,6 @@ export default async function Page() {
     );
   } catch (error) {
     console.error('Error rendering page:', error);
-    // Optionally, return a fallback UI or error page
     return <div>Something went wrong.</div>;
   }
 }
