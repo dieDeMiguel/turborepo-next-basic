@@ -17,7 +17,8 @@
         "EMAIL",
         "EMAIL_PASS",
         "FLAGS_SECRET",
-        "SHOW_COUNTRY"
+        "SHOW_COUNTRY",
+        "PRODUCTION_URL"
       ]
     },
     "lint": {
