@@ -2,15 +2,7 @@ import { NextResponse } from 'next/server';
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { geolocation } from '@vercel/functions';
 import { showAorB } from './experiments/flags';
-
-// Country flags mapping
-const countryFlags: Record<string, string> = {
-  GB: '🇬🇧',
-  AT: '🇦🇹',
-  DE: '🇩🇪',
-  CH: '🇨🇭',
-  FR: '🇫🇷',
-};
+import { countryFlags } from './constants/flags';
 
 const isProtectedRoute = createRouteMatcher(['/dashboard(.*)', '/forum(.*)']);
 

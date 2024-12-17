@@ -34,7 +34,7 @@ export const metadata: Metadata = {
         width: 300,
         height: 300,
         url: './opengraph-image.jpg',
-        alt: 'Imagen de un Formulario de Anmeldung',
+        alt: 'Shopr E-Commerce Dahsboard',
       },
     ],
     locale: 'en_US',
@@ -49,6 +49,9 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta name="google-site-verification" content="WS3OruPbOTb3KjTk88VevFCRmjmNPHWQjKEoeTzPzLo" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased`}>
         {(await draftMode()).isEnabled && (
           <>
