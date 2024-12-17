@@ -25,7 +25,6 @@ export default async function Page() {
       <BlackFridayBanner />
       <div className="container mx-auto flex flex-col items-center justify-center px-4">
         <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>
-        <h1>Hello Vercel</h1>
         <Suspense fallback={<LoadingProducts />}>
           <ProductsView products={products} categories={categories} />
         </Suspense>
