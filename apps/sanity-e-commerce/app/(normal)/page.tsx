@@ -14,24 +14,37 @@ const LoadingCountryInfo = () => <ProductGridSkeleton />;
 const LoadingProducts = () => <ProductGridSkeleton />;
 
 export default async function Page() {
-  const [products, categories, shouldShowCountry] = await Promise.all([
-    getAllProducts(),
-    getAllCategories(),
-    showCountry(),
-  ]);
+  try {
+    // Fetch data in parallel using Promise.allSettled for better error handling
+    const [productsResult, categoriesResult, flagResult] = await Promise.allSettled([
+      getAllProducts(),
+      getAllCategories(),
+      showCountry(),
+    ]);
 
-  return (
-    <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg bg-gray-100 py-8">
-      <BlackFridayBanner />
-      <div className="container mx-auto flex flex-col items-center justify-center px-4">
-        <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>
-        <Suspense fallback={<LoadingProducts />}>
-          <ProductsView products={products} categories={categories} />
-        </Suspense>
-        <Suspense>
-          <FlagValues values={{ 'show-country': shouldShowCountry }} />
-        </Suspense>
+    // Handle potential rejections individually
+    const products = productsResult.status === 'fulfilled' ? productsResult.value : [];
+    const categories = categoriesResult.status === 'fulfilled' ? categoriesResult.value : [];
+    const shouldShowCountry = flagResult.status === 'fulfilled' ? flagResult.value : false;
+
+    return (
+      <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg bg-gray-100 py-8">
+        <BlackFridayBanner />
+        <div className="container mx-auto flex flex-col items-center justify-center px-4">
+          <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>
+          <Suspense fallback={<LoadingProducts />}>
+            <ProductsView products={products} categories={categories} />
+          </Suspense>
+          {/* If FlagValues is necessary, ensure it's optimized */}
+          <Suspense fallback={null}>
+            <FlagValues values={{ 'show-country': shouldShowCountry }} />
+          </Suspense>
+        </div>
       </div>
-    </div>
-  );
+    );
+  } catch (error) {
+    console.error('Error rendering page:', error);
+    // Optionally, return a fallback UI or error page
+    return <div>Something went wrong.</div>;
+  }
 }

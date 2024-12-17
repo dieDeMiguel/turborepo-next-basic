@@ -10,6 +10,7 @@ export const getAllCategories = async () => {
   try {
     const categories = await sanityFetch({
       query: ALL_CATEGORIES_QUERY,
+      tag: 'product', // Tag-based revalidation
     });
 
     return categories.data || [];

@@ -10,6 +10,7 @@ export const getAllProducts = async () => {
   try {
     const products = await sanityFetch({
       query: ALL_PRODUCTS_QUERY,
+      tag: 'category', // Tag-based revalidation
     });
     return products.data || [];
   } catch (error) {
@@ -17,3 +18,4 @@ export const getAllProducts = async () => {
     return [];
   }
 };
+ 
