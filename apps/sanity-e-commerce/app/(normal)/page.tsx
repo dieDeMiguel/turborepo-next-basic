@@ -28,7 +28,9 @@ export default async function Page() {
         <Suspense fallback={<LoadingProducts />}>
           <ProductsView products={products} categories={categories} />
         </Suspense>
-        <FlagValues values={{ 'show-country': shouldShowCountry }} />
+        <Suspense>
+          <FlagValues values={{ 'show-country': shouldShowCountry }} />
+        </Suspense>
       </div>
     </div>
   );
