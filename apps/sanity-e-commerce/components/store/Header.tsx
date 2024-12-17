@@ -54,7 +54,6 @@ export default function Header() {
                 <span>My Orders</span>
               </Link>
             </SignedIn>
-
             {user ? (
               <div className="flex items-center space-x-2">
                 <UserButton />
@@ -66,7 +65,6 @@ export default function Header() {
             ) : (
               <SignInButton mode="modal" />
             )}
-
             {user?.passkeys.length === 0 && (
               <button
                 onClick={createClerkPasskey}
