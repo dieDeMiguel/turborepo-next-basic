@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import BlackFridayBanner from '@/components/store/BlackFridayBanner';
 import CountryInfo from '@/components/store/CountryInfo';
 import ProductsView from '@/components/store/ProductsView';
-import { showCountry } from '@/experiments/flags';
+import { showAorB, showCountry } from '@/experiments/flags';
 import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
 import { FlagValues } from '@vercel/flags/react';
@@ -14,14 +14,16 @@ const LoadingCountryInfo = () => <ProductGridSkeleton />;
 const LoadingProducts = () => <ProductGridSkeleton />;
 
 export default async function Page() {
-  const [products, categories, shouldShowCountry] = await Promise.all([
+  const [products, categories, shouldShowCountry, shouldShowAorB] = await Promise.all([
     getAllProducts(),
     getAllCategories(),
     showCountry(),
+    showAorB(),
   ]);
 
   const flagValues = {
     'show-country': shouldShowCountry,
+    'show-a-or-b': shouldShowAorB,
   };
 
   return (
