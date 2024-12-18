@@ -1,4 +1,4 @@
-# Sanity E-Commerce Monorepo
+# Shopr E-Commerce + Operations App Monorepo
 
 This monorepo contains the **Shopr E-Commerce App** and **Operations App**, powered by **Turborepo**. These apps leverage modern web technologies such as **Next.js**, **Sanity**, **Stripe**, **Clerk**, and more, ensuring a seamless development and production experience.
 
