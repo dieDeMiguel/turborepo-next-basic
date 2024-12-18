@@ -76,11 +76,23 @@ For operations-app:
 pnpm dev --filter operations-app
 ```
 
+To run both apps simultaneously:
+
+```
+pnpm dev 
+```
+
 Listen to stripe events
 Login into stripe using its CLI
 
 ```
 stripe listen --forward-to localhost:XXXX/store/webhook
+```
+
+To access Sanity Studio
+
+```
+localhost:XXXX/studio
 ```
 
 ### Build
