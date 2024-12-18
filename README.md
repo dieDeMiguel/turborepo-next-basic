@@ -29,7 +29,7 @@ Clone the Repository
 git clone https://github.com/your-repo-name/monorepo.git
 ```
 
-##Install Dependencies
+Install Dependencies
 
 We use pnpm for managing dependencies:
 
