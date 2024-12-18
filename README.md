@@ -95,6 +95,8 @@ To access Sanity Studio
 localhost:XXXX/studio
 ```
 
+You can create products using the images inside the "Product Images" folder on the Sanity-e-commerce repo.
+
 ### Build
 
 To build all apps and packages, run the following command:
