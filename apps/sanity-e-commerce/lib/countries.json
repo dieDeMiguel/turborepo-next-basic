@@ -86,5 +86,178 @@
       "fra": "French"
     },
     "flag": "🇫🇷"
+  },
+  {
+    "cca2": "US",
+    "name": {
+      "common": "United States",
+      "official": "United States of America"
+    },
+    "currencies": {
+      "USD": {
+        "name": "United States dollar",
+        "symbol": "$"
+      }
+    },
+    "languages": {
+      "eng": "English"
+    },
+    "flag": "🇺🇸"
+  },
+  {
+    "cca2": "IT",
+    "name": {
+      "common": "Italy",
+      "official": "Italian Republic"
+    },
+    "currencies": {
+      "EUR": {
+        "name": "Euro",
+        "symbol": "€"
+      }
+    },
+    "languages": {
+      "ita": "Italian"
+    },
+    "flag": "🇮🇹"
+  },
+  {
+    "cca2": "ES",
+    "name": {
+      "common": "Spain",
+      "official": "Kingdom of Spain"
+    },
+    "currencies": {
+      "EUR": {
+        "name": "Euro",
+        "symbol": "€"
+      }
+    },
+    "languages": {
+      "spa": "Spanish"
+    },
+    "flag": "🇪🇸"
+  },
+  {
+    "cca2": "NL",
+    "name": {
+      "common": "Netherlands",
+      "official": "Kingdom of the Netherlands"
+    },
+    "currencies": {
+      "EUR": {
+        "name": "Euro",
+        "symbol": "€"
+      }
+    },
+    "languages": {
+      "nld": "Dutch"
+    },
+    "flag": "🇳🇱"
+  },
+  {
+    "cca2": "BE",
+    "name": {
+      "common": "Belgium",
+      "official": "Kingdom of Belgium"
+    },
+    "currencies": {
+      "EUR": {
+        "name": "Euro",
+        "symbol": "€"
+      }
+    },
+    "languages": {
+      "nld": "Dutch",
+      "fra": "French",
+      "deu": "German"
+    },
+    "flag": "🇧🇪"
+  },
+  {
+    "cca2": "SE",
+    "name": {
+      "common": "Sweden",
+      "official": "Kingdom of Sweden"
+    },
+    "currencies": {
+      "SEK": {
+        "name": "Swedish krona",
+        "symbol": "kr"
+      }
+    },
+    "languages": {
+      "swe": "Swedish"
+    },
+    "flag": "🇸🇪"
+  },
+  {
+    "cca2": "NO",
+    "name": {
+      "common": "Norway",
+      "official": "Kingdom of Norway"
+    },
+    "currencies": {
+      "NOK": {
+        "name": "Norwegian krone",
+        "symbol": "kr"
+      }
+    },
+    "languages": {
+      "nor": "Norwegian"
+    },
+    "flag": "🇳🇴"
+  },
+  {
+    "cca2": "DK",
+    "name": {
+      "common": "Denmark",
+      "official": "Kingdom of Denmark"
+    },
+    "currencies": {
+      "DKK": {
+        "name": "Danish krone",
+        "symbol": "kr"
+      }
+    },
+    "languages": {
+      "dan": "Danish"
+    },
+    "flag": "🇩🇰"
+  },
+  {
+    "cca2": "FI",
+    "name": {
+      "common": "Finland",
+      "official": "Republic of Finland"
+    },
+    "currencies": {
+      "EUR": {
+        "name": "Euro",
+        "symbol": "€"
+      }
+    },
+    "languages": {
+      "fin": "Finnish",
+      "swe": "Swedish"
+    },
+    "flag": "🇫🇮"
+  },
+  {
+    "cca2": "PT",
+    "name": {
+      "common": "Portugal",
+      "official": "Portuguese Republic"
+    },
+    "currencies": {
+      "EUR": {
+        "name": "Euro",
+        "symbol": "€"
+      }
+    },
+    "languages": {
+      "por": "Portuguese"
+    },
+    "flag": "🇵🇹"
   }
 ]
