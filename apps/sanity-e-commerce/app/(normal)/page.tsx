@@ -30,7 +30,7 @@ export default async function Page() {
     <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg bg-gray-100 py-8">
       <BlackFridayBanner />
       <div className="container mx-auto flex flex-col items-center justify-center px-4">
-        <h2>Hello Vercel</h2>
+        <h2>Hello Vercel today!</h2>
         <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>
         <Suspense fallback={<LoadingProducts />}>
           <ProductsView products={products} categories={categories} />
