@@ -21,15 +21,16 @@ This Turborepo has some additional tools already setup for you:
 - [ESLint](https://eslint.org/) for code linting
 - [Prettier](https://prettier.io) for code formatting
 
-### Installation
+## Installation
 
-###Clone the Repository
+Clone the Repository
 
 ```
 git clone https://github.com/your-repo-name/monorepo.git
 ```
 
 ##Install Dependencies
+
 We use pnpm for managing dependencies:
 
 ```
