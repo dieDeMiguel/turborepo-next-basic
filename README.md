@@ -135,5 +135,6 @@ This will authenticate the Turborepo CLI with your [Vercel account](https://verc
 
 License
 This project is licensed under the MIT License.
+Sanity-e-commerce project copyright belongs to: https://www.papareact.com
 
 
