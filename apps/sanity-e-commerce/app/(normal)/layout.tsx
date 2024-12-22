@@ -9,6 +9,7 @@ import { ClerkProvider } from '@clerk/nextjs';
 import Header from '@/components/store/Header';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import Footer from '@/components/store/footer/footer';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -65,6 +66,7 @@ export default async function RootLayout({
             <Header />
             {children}
           </main>
+          <Footer href="/impressum" label="Impressum" />
         </ClerkProvider>
         <SanityLive />
         <Analytics />
