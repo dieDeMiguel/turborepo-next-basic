@@ -1,5 +1,5 @@
 import { InfoIcon, CreditCard } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, Alert, AlertDescription, AlertTitle } from '@repo/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, Alert, AlertDescription, AlertTitle } from '@repo/ui/components/card';
 
 export default function Impressum() {
   return (
