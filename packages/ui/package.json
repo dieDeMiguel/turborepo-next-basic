@@ -5,14 +5,17 @@
   "private": true,
   "exports": {
     ".": "./dist/index.js",
-    "./button": "./src/button.tsx",
-    "./card": "./src/card.tsx",
-    "./code": "./src/code.tsx",
+    "./button": "./src/components/button.tsx",
+    "./card": "./src/components/card.tsx",
+    "./code": "./src/components/code.tsx",
     "./styles": "./dist/styles.css",
-    "./login-card": "./src/login-card.tsx",
-    "./register-card": "./src/register-card.tsx",
-    "./styled-link": "./src/styled-link.tsx",
-    "./input-field": "./src/input-field.tsx"
+    "./input-field": "./src/components/input-field.tsx",
+    "./globals.css": "./src/styles/globals.css",
+    "./postcss.config": "./postcss.config.mjs",
+    "./tailwind.config": "./tailwind.config.ts",
+    "./lib/*": "./src/lib/*.ts",
+    "./components/*": "./src/components/*.tsx",
+    "./hooks/*": "./src/hooks/*.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -26,7 +29,11 @@
     "@types/node": "^20.11.24",
     "@types/react": "18.3.0",
     "@types/react-dom": "18.3.1",
-    "typescript": "5.5.4"
+    "typescript": "5.5.4",
+    "tailwindcss": "^3.4.14",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.47",
+    "react": "^18.3.1"
   },
   "dependencies": {
     "class-variance-authority": "^0.7.1",
