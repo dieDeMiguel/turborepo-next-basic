@@ -4,7 +4,7 @@ import { ClerkLoaded, SignedIn, SignInButton, UserButton, useUser } from '@clerk
 import Form from 'next/form';
 import { PackageIcon, TrolleyIcon } from '@sanity/icons';
 import useBasketStore from '@/app/store/store';
-import InputField from '@repo/ui/input-field';
+import InputField from '@repo/ui/components/input-field';
 
 export default function Header() {
   const { user } = useUser();

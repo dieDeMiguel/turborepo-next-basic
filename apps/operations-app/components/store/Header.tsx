@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import Form from 'next/form';
-import InputField from '@repo/ui/input-field';
+import InputField from '@repo/ui/components/input-field';
 
 export default function Header() {
   return (
