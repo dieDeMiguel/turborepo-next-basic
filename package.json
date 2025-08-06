@@ -3,9 +3,14 @@
   "private": true,
   "scripts": {
     "build": "turbo build",
+    "build:turbopack": "turbo build --env-mode=loose",
     "dev": "turbo dev",
+    "dev:turbopack": "turbo dev --env-mode=loose",
     "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "clean": "turbo clean",
+    "type-check": "turbo check-types",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
     "prettier": "^3.4.2",
