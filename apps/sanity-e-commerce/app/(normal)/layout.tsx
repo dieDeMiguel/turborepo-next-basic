@@ -54,7 +54,7 @@ export default async function RootLayout({
         <meta name="google-site-verification" content="WS3OruPbOTb3KjTk88VevFCRmjmNPHWQjKEoeTzPzLo" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased bg-black`}>
         {(await draftMode()).isEnabled && (
           <>
             <DisableDraftMode />
