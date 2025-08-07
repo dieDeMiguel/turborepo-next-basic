@@ -12,16 +12,27 @@ export const dynamic = 'force-dynamic';
 export default function CountryInfo() {
   const [mounted, setMounted] = useState(false);
   const [countryInfo, setCountryInfo] = useState<{ name: string; flag: string }>({
-    name: 'United Kingdom',
-    flag: '🇬🇧'
+    name: 'Loading...',
+    flag: '🌍'
   });
   const { theme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
-    // Simulate getting country info from cookies or API
-    const countryCode = 'GB';
-    const flag = '🇬🇧';
+    
+    // Get country and flag from cookies with proper decoding
+    const getCookieValue = (name: string): string | null => {
+      const value = document.cookie
+        .split('; ')
+        .find(row => row.startsWith(`${name}=`))
+        ?.split('=')[1];
+      
+      return value ? decodeURIComponent(value) : null;
+    };
+    
+    const countryCode = getCookieValue('x-country') || 'GB';
+    const flag = getCookieValue('x-flag') || '🇬🇧';
+    
     const country = countries.find((country) => country.cca2 === countryCode) || countries.find((c) => c.cca2 === 'GB');
     const countryName = getCountryName(country);
     
@@ -32,7 +43,7 @@ export default function CountryInfo() {
   if (!mounted) {
     return (
       <div className="mb-4 flex items-center justify-center space-x-4 border border-border bg-card/50 sm:mb-0 p-2 rounded-lg">
-        <span className="text-4xl">🇬🇧</span>
+        <span className="text-4xl">🌍</span>
         <span className="text-xl font-medium text-foreground">Loading...</span>
       </div>
     );
