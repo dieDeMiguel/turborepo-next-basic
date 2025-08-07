@@ -13,24 +13,43 @@ export default clerkMiddleware(async (auth, req) => {
   }
 
   const { pathname, hostname } = req.nextUrl;
-  const isLocal = hostname === 'localhost';
-  const geo = (await geolocation(req)) || {};
-  const countryCode = isLocal ? 'GB' : geo.country || 'unknown';
-  const flag = countryFlags[countryCode] || '🌍';
+  const isLocal = hostname === 'localhost' || hostname === '127.0.0.1';
+  
+  let countryCode = 'GB'; // Default fallback
+  let flag = '🇬🇧';
+  
+  try {
+    // Get geolocation data from Vercel
+    const geo = await geolocation(req);
+    
+    if (geo && geo.country) {
+      countryCode = geo.country;
+      flag = countryFlags[countryCode] || '🌍';
+    } else if (isLocal) {
+      // For local development, simulate the German IP for testing
+      countryCode = 'DE';
+      flag = countryFlags['DE'] || '🇩🇪';
+    }
+  } catch (error) {
+    console.error('Geolocation error in middleware:', error);
+    // Keep default values
+  }
 
   // Set cookies for geolocation
   const response = NextResponse.next();
   response.cookies.set('x-country', countryCode, {
     path: '/',
-    httpOnly: true,
+    httpOnly: false, // Allow client-side access
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
+    maxAge: 60 * 60 * 24, // 24 hours
   });
   response.cookies.set('x-flag', flag, {
     path: '/',
-    httpOnly: true,
+    httpOnly: false, // Allow client-side access
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'lax',
+    maxAge: 60 * 60 * 24, // 24 hours
   });
 
   // Add logic for `/performance` route
