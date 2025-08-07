@@ -1,4 +1,4 @@
-import { unstable_flag as flag } from '@vercel/flags/next';
+import { flag } from 'flags/next';
 
 export const showCountry = flag({
   key: 'show-country',

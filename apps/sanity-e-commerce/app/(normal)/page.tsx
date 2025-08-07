@@ -5,7 +5,7 @@ import ProductsView from '@/components/store/ProductsView';
 import { showAorB, showCountry, showPoolImage } from '@/experiments/flags';
 import { getAllCategories } from '@/sanity/lib/products/getAllCategories';
 import { getAllProducts } from '@/sanity/lib/products/getAllProducts';
-import { FlagValues } from '@vercel/flags/react';
+import { FlagValues } from 'flags/react';
 import ProductGridSkeleton from '@/components/ui/skeleton';
 import Image from 'next/image';
 

@@ -11,6 +11,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Footer from '@/components/store/footer/footer';
 import { ThemeProvider } from '@/components/theme-provider';
+import { VercelToolbar } from '@vercel/toolbar/next';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -49,6 +50,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const shouldInjectToolbar = process.env.NODE_ENV === 'development';
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -73,6 +75,7 @@ export default async function RootLayout({
           <SanityLive />
           <Analytics />
           <SpeedInsights />
+          {shouldInjectToolbar && <VercelToolbar />}
         </ThemeProvider>
       </body>
     </html>

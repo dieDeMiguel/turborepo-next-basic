@@ -7,7 +7,15 @@ const nextConfig: NextConfig = {
       hostname: 'cdn.sanity.io'
     }
     ]
-  }
+  },
+  experimental: {
+    instrumentationHook: true,
+  },
+  devIndicators: {
+    appIsrStatus: true,
+  },
 };
 
-export default nextConfig;
+const withVercelToolbar = require('@vercel/toolbar/plugins/next')();
+
+export default withVercelToolbar(nextConfig);
