@@ -1,28 +1,55 @@
-import { cookies } from 'next/headers';
+'use client';
+
+import { useTheme } from 'next-themes';
 import countriesData from '@/lib/countries.json';
 import { Country } from '@/types/country';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 
 const countries: Country[] = countriesData;
 
 export const dynamic = 'force-dynamic';
 
-export default async function CountryInfo() {
-  const cookieStore = await cookies();
-  const countryCode = cookieStore.get('x-country')?.value || 'GB';
-  const flag = cookieStore.get('x-flag')?.value || '🇬🇧';
+export default function CountryInfo() {
+  const [mounted, setMounted] = useState(false);
+  const [countryInfo, setCountryInfo] = useState<{ name: string; flag: string }>({
+    name: 'United Kingdom',
+    flag: '🇬🇧'
+  });
+  const { theme } = useTheme();
 
-  const countryInfo =
-    countries.find((country) => country.cca2 === countryCode) || countries.find((c) => c.cca2 === 'GB');
+  useEffect(() => {
+    setMounted(true);
+    // Simulate getting country info from cookies or API
+    const countryCode = 'GB';
+    const flag = '🇬🇧';
+    const country = countries.find((country) => country.cca2 === countryCode) || countries.find((c) => c.cca2 === 'GB');
+    const countryName = getCountryName(country);
+    
+    setCountryInfo({ name: countryName, flag });
+  }, []);
 
-  const countryName = getCountryName(countryInfo);
-  const flagEmoji = flag;
+  if (!mounted) {
+    return (
+      <div className={`mb-4 flex items-center justify-center space-x-4 border sm:mb-0 p-2 rounded-lg ${
+        theme === 'dark' 
+          ? 'border-slate-600 bg-slate-800/50 text-slate-100' 
+          : 'border-gray-300 bg-white/50 text-gray-800'
+      }`}>
+        <span className="text-4xl">🇬🇧</span>
+        <span className="text-xl font-medium">Loading...</span>
+      </div>
+    );
+  }
 
   return (
-    <Suspense fallback={<div>Loading country info...</div>}>
-      <div className="mb-4 flex items-center justify-center space-x-4 sm:mb-0">
-        <span className="text-4xl">{flagEmoji}</span>
-        <span className="text-xl font-medium text-gray-700">{countryName}</span>
+    <Suspense fallback={<div className={theme === 'dark' ? 'text-slate-400' : 'text-gray-600'}>Loading country info...</div>}>
+      <div className={`mb-4 flex items-center justify-center space-x-4 border sm:mb-0 p-2 rounded-lg backdrop-blur-sm transition-colors duration-200 ${
+        theme === 'dark' 
+          ? 'border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500' 
+          : 'border-gray-300 bg-white/50 text-gray-800 hover:border-gray-400'
+      }`}>
+        <span className="text-4xl">{countryInfo.flag}</span>
+        <span className="text-xl font-medium">{countryInfo.name}</span>
       </div>
     </Suspense>
   );

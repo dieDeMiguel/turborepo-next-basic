@@ -10,6 +10,7 @@ import Header from '@/components/store/Header';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import Footer from '@/components/store/footer/footer';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -49,28 +50,30 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <meta name="google-site-verification" content="WS3OruPbOTb3KjTk88VevFCRmjmNPHWQjKEoeTzPzLo" />
         <link rel="icon" href="/favicon.ico" />
       </head>
-      <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased bg-black`}>
-        {(await draftMode()).isEnabled && (
-          <>
-            <DisableDraftMode />
-            <VisualEditing />
-          </>
-        )}
-        <ClerkProvider dynamic>
-          <main className="page__wrapper bg-white px-5 pb-6">
-            <Header />
-            {children}
-          </main>
-          <Footer href="/impressum" label="Impressum" />
-        </ClerkProvider>
-        <SanityLive />
-        <Analytics />
-        <SpeedInsights />
+      <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased bg-background`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {(await draftMode()).isEnabled && (
+            <>
+              <DisableDraftMode />
+              <VisualEditing />
+            </>
+          )}
+          <ClerkProvider dynamic>
+            <main className="page__wrapper px-5 pb-6">
+              <Header />
+              {children}
+            </main>
+            <Footer href="/impressum" label="Impressum" />
+          </ClerkProvider>
+          <SanityLive />
+          <Analytics />
+          <SpeedInsights />
+        </ThemeProvider>
       </body>
     </html>
   );

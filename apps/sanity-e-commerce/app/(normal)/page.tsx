@@ -27,7 +27,7 @@ export default async function Page() {
   };
 
   return (
-    <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg bg-gray-300 py-8">
+    <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg py-8">
       <BlackFridayBanner />
       <div className="container mx-auto flex flex-col items-center justify-center px-4">
         <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>

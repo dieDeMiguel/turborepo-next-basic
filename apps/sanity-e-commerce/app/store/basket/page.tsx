@@ -73,7 +73,7 @@ function BasketPage() {
   }
 
   return (
-    <div className="container mx-auto max-w-6xl p-4 bg-background">
+    <div className="container mx-auto max-w-6xl p-4">
       <h1 className="mb-4 text-2xl font-bold text-foreground">Your Basket</h1>
       <div className="flex flex-col gap-8 lg:flex-row">
         <div className="flex-grow">

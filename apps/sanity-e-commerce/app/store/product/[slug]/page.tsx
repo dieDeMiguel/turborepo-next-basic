@@ -63,9 +63,9 @@ async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
         {/* Product Details Section */}
         <div className="mt-4 flex flex-col justify-between lg:col-span-2 xl:col-span-3">
           <div>
-            <h1 className="mb-4 text-4xl font-extrabold text-gray-800">{product.name}</h1>
+            <h1 className="mb-4 text-4xl font-extrabold text-foreground">{product.name}</h1>
             <div className="mb-4 text-2xl font-semibold text-green-600">£{product.price?.toFixed(2)}</div>
-            <div className="prose mb-6 max-w-none text-gray-700">
+            <div className="prose mb-6 max-w-none text-foreground">
               {Array.isArray(product.description) && (
                 <PortableText value={product.description} components={customComponents} />
               )}

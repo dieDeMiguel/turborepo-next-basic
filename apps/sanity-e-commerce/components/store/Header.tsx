@@ -5,6 +5,7 @@ import Form from 'next/form';
 import { PackageIcon, TrolleyIcon } from '@sanity/icons';
 import useBasketStore from '@/app/store/store';
 import InputField from '@repo/ui/input-field';
+import ThemeToggle from './ThemeToggle';
 
 export default function Header() {
   const { user } = useUser();
@@ -73,6 +74,7 @@ export default function Header() {
                 Create a passkey
               </button>
             )} */}
+            <ThemeToggle />
           </ClerkLoaded>
         </div>
       </div>

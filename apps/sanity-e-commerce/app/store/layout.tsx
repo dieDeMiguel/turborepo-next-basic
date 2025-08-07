@@ -7,6 +7,7 @@ import { draftMode } from 'next/headers';
 import { VisualEditing } from 'next-sanity';
 import { DisableDraftMode } from '@/components/store/DisableDraftModeButton';
 import Header from '@/components/store/Header';
+import { ThemeProvider } from '@/components/theme-provider';
 
 const geistSans = localFont({
   src: '../fonts/GeistVF.woff',
@@ -30,22 +31,24 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider dynamic>
-      <html lang="en">
-        <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased`}>
-          {(await draftMode()).isEnabled && (
-            <>
-              <DisableDraftMode />
-              <VisualEditing />
-            </>
-          )}
-          <main>
-            <Header />
-            {children}
-          </main>
-          <SanityLive />
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${geistMono.variable} mx-auto max-w-5xl antialiased bg-background`}>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          <ClerkProvider dynamic>
+            {(await draftMode()).isEnabled && (
+              <>
+                <DisableDraftMode />
+                <VisualEditing />
+              </>
+            )}
+            <main>
+              <Header />
+              {children}
+            </main>
+            <SanityLive />
+          </ClerkProvider>
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }
