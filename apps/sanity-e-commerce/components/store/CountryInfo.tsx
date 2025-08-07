@@ -28,21 +28,18 @@ export default function CountryInfo() {
     setCountryInfo({ name: countryName, flag });
   }, []);
 
+  // Use theme-neutral classes until mounted to prevent hydration mismatch
   if (!mounted) {
     return (
-      <div className={`mb-4 flex items-center justify-center space-x-4 border sm:mb-0 p-2 rounded-lg ${
-        theme === 'dark' 
-          ? 'border-slate-600 bg-slate-800/50 text-slate-100' 
-          : 'border-gray-300 bg-white/50 text-gray-800'
-      }`}>
+      <div className="mb-4 flex items-center justify-center space-x-4 border border-border bg-card/50 sm:mb-0 p-2 rounded-lg">
         <span className="text-4xl">🇬🇧</span>
-        <span className="text-xl font-medium">Loading...</span>
+        <span className="text-xl font-medium text-foreground">Loading...</span>
       </div>
     );
   }
 
   return (
-    <Suspense fallback={<div className={theme === 'dark' ? 'text-slate-400' : 'text-gray-600'}>Loading country info...</div>}>
+    <Suspense fallback={<div className="text-muted-foreground">Loading country info...</div>}>
       <div className={`mb-4 flex items-center justify-center space-x-4 border sm:mb-0 p-2 rounded-lg backdrop-blur-sm transition-colors duration-200 ${
         theme === 'dark' 
           ? 'border-slate-600 bg-slate-800/50 text-slate-100 hover:border-slate-500' 
