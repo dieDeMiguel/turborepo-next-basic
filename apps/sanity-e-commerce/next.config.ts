@@ -8,9 +8,6 @@ const nextConfig: NextConfig = {
     }
     ]
   },
-  experimental: {
-    instrumentationHook: true,
-  },
   devIndicators: {
     appIsrStatus: true,
   },
