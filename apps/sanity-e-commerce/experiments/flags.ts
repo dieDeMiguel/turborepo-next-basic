@@ -10,11 +10,6 @@ export const showAorB = flag({
   decide: () => Math.random() > 0.5, // 50% chance to show
 });
 
-export const showSummerBanner = flag({
-  key: 'show-summer-banner',
-  decide: () => process.env.SHOW_SUMMER_BANNER === 'true',
-});
-
 export const showPoolImage = flag({
   key: 'show-pool-image',
   decide: () => process.env.SHOW_POOL_IMAGE === 'true',

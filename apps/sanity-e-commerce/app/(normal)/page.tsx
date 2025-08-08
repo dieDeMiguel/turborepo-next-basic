@@ -31,14 +31,13 @@ export default async function Page() {
 
   return (
     <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg py-8">
-      <BlackFridayBanner />
       <div className="container mx-auto flex flex-col items-center justify-center px-4">
         <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>
         <Suspense fallback={<LoadingProducts />}>
           <ProductsView products={products} categories={categories} />
         </Suspense>
         {shouldShowPoolImage && <Image width={1000} height={1000} src="/pool.jpg" alt="Pool" className="mt-4" />}
-        <FlagValues values={{ 'show-country': shouldShowCountry, 'show-pool-image': shouldShowPoolImage }} />
+        <FlagValues values={flagValues} />
       </div>
       <script
         // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
