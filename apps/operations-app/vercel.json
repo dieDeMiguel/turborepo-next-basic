@@ -1,0 +1,16 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "cd ../.. && pnpm build --filter=operations-app",
+  "installCommand": "cd ../.. && pnpm install",
+  "outputDirectory": ".next",
+  "env": {
+    "NEXT_PUBLIC_SANITY_PROJECT_ID": "@sanity_project_id",
+    "NEXT_PUBLIC_SANITY_DATASET": "@sanity_dataset",
+    "NEXT_PUBLIC_SANITY_API_VERSION": "@sanity_api_version",
+    "SANITY_API_TOKEN": "@sanity_api_token",
+    "STRIPE_SECRET_KEY": "@stripe_secret_key",
+    "EMAIL": "@email",
+    "EMAIL_PASS": "@email_pass",
+    "NEXT_PUBLIC_BASE_URL": "@base_url"
+  }
+}
