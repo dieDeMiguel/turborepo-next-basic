@@ -31,6 +31,11 @@ export default async function Page() {
 
   return (
     <div className="mb-4 mt-4 flex flex-col gap-8 rounded-lg py-8">
+      {/* CI/CD Demo Banner */}
+      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white text-center py-2 px-4 rounded-lg shadow-lg">
+        <p className="text-sm font-medium">🚀 PPR Demo - Deployed via Vercel CI/CD - {new Date().toLocaleString()}</p>
+      </div>
+      
       <div className="container mx-auto flex flex-col items-center justify-center px-4">
         <Suspense fallback={<LoadingCountryInfo />}>{shouldShowCountry && <CountryInfo />}</Suspense>
         <Suspense fallback={<LoadingProducts />}>
