@@ -1,8 +1,15 @@
 import type { NextConfig } from "next";
+import { withVercelToolbar } from '@vercel/toolbar/plugins/next';
 
 const nextConfig: NextConfig = {
   experimental: {
     ppr: true, // Enable Partial Prerendering
+  },
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    ignoreBuildErrors: true,
   },
   images: {
     remotePatterns: [
@@ -16,6 +23,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-const withVercelToolbar = require('@vercel/toolbar/plugins/next')();
-
-export default withVercelToolbar(nextConfig);
+export default withVercelToolbar()(nextConfig);

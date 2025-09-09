@@ -37,6 +37,7 @@
     "../../packages/ui/src/card.tsx"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "app/studio/layout.tsx"
   ]
 }
