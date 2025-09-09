@@ -1,5 +1,4 @@
-import React, { Suspense } from 'react';
-import BlackFridayBanner from '@/components/store/BlackFridayBanner';
+import { Suspense } from 'react';
 import CountryInfo from '@/components/store/CountryInfo';
 import ProductsView from '@/components/store/ProductsView';
 import { showAorB, showCountry, showPoolImage } from '@/experiments/flags';
@@ -9,6 +8,7 @@ import { FlagValues } from 'flags/react';
 import ProductGridSkeleton from '@/components/ui/skeleton';
 import Image from 'next/image';
 
+export const experimental_ppr = true; // Enable PPR for this page
 export const revalidate = 1800; // ISR: revalidate every 30 minutes
 
 const LoadingCountryInfo = () => <ProductGridSkeleton />;
@@ -40,7 +40,7 @@ export default async function Page() {
         <FlagValues values={flagValues} />
       </div>
       <script
-        // biome-ignore lint/security/noDangerouslySetInnerHtml: <explanation>
+        // biome-ignore lint/security/noDangerouslySetInnerHtml: Feature flags injection for client-side access
         dangerouslySetInnerHTML={{
           __html: `window.__FEATURE_FLAGS__ = ${JSON.stringify(flagValues)};`,
         }}
