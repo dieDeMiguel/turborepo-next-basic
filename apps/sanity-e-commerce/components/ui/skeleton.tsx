@@ -7,8 +7,8 @@ function Skeleton({ className, ...props }: React.HTMLAttributes<HTMLDivElement>)
 export default function ProductGridSkeleton() {
   return (
     <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-      {Array.from({ length: 8 }).map((_, index) => (
-        <div key={index} className="space-y-3 rounded-lg border p-4 shadow-sm">
+      {Array.from({ length: 8 }).map((_) => (
+        <div key={Math.random()} className="space-y-3 rounded-lg border p-4 shadow-sm">
           <Skeleton className="h-[180px] w-full rounded-lg" />
           <Skeleton className="h-5 w-3/4" />
           <Skeleton className="h-4 w-full" />

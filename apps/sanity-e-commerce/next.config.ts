@@ -4,7 +4,6 @@ import { withVercelToolbar } from '@vercel/toolbar/plugins/next';
 const nextConfig: NextConfig = {
   experimental: {
     ppr: true, // Enable Partial Prerendering
-    instrumentationHook: true, // Enable OpenTelemetry instrumentation
   },
   typescript: {
     // !! WARN !!
@@ -18,9 +17,6 @@ const nextConfig: NextConfig = {
       hostname: 'cdn.sanity.io'
     }
     ]
-  },
-  devIndicators: {
-    appIsrStatus: true,
   },
 };
 
