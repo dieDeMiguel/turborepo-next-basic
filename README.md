@@ -6,7 +6,7 @@ This monorepo contains the **Shopr E-Commerce App** and **Operations App**, powe
 
 - **sanity-e-commerce**: The main e-commerce application using **Sanity CMS**, **Stripe** for payments, and **Clerk** for authentication.
 - **operations-app**: A supporting app for monitoring operations, fetching data via **Sanity**, and providing backend insights.
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
+- `@repo/ui`: Centralized UI component library powered by **shadcn/ui** - Shared accessible components, utilities, and design system
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 

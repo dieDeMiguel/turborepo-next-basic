@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import useBasketStore from '../store';
 import { useEffect } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@repo/ui/components/ui/button';
 import Link from 'next/link';
 
 function SuccessPage() {
