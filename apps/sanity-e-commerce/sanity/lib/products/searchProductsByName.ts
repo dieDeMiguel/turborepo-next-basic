@@ -1,7 +1,6 @@
 import { defineQuery } from "next-sanity";
 import { sanityFetch } from "../live";
 
-
 export const searchProductsByName = async (searchParam: string) => {
     const PRODUCT_SEARCH_QUERY = defineQuery(`
         *[
@@ -11,13 +10,13 @@ export const searchProductsByName = async (searchParam: string) => {
     `);
 
     try {
+        // Using sanityFetch for automatic live updates and tag-based revalidation
         const products = await sanityFetch({
             query: PRODUCT_SEARCH_QUERY,
             params: {
-                searchParam: `${searchParam}*`, 
+                searchParam: `${searchParam}*`,
             },
         });
-
         return products.data || [];
     } catch (error) {
         console.error("Error fetching products by name:", error);

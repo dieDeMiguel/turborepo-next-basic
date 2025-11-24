@@ -9,13 +9,11 @@ export const getProductBySlug = async (slug: string) => {
     `);
 
     try {
+        // Using sanityFetch for automatic live updates and tag-based revalidation
         const product = await sanityFetch({
             query: PRODUCT_BY_ID_QUERY,
-            params: {
-                slug,
-            },
+            params: { slug },
         });
-
         return product.data || null;
     } catch (error) {
         console.error("Error fetching product by ID:", error);

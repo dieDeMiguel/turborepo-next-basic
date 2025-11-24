@@ -34,7 +34,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "../../packages/ui/src/alert.tsx",
-    "../../packages/ui/src/card.tsx"
+    "../../packages/ui/src/card.tsx",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

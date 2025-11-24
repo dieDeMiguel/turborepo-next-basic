@@ -24,11 +24,9 @@ const customComponents = {
   },
 };
 
-export const dynamic = 'force-static';
-export const revalidate = 60;
-
 async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+  // getProductBySlug is cached with "use cache" and cacheLife
   const product = await getProductBySlug(slug);
 
   if (!product) {

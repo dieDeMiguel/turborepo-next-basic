@@ -1,8 +1,6 @@
 import { getAllOrders } from '@/sanity/lib/orders/getAllOrders';
 
-export const dynamic = 'force-static';
-export const revalidate = 60;
-
+// Using sanityFetch with Live Content API - no manual revalidation needed
 export default async function Page() {
   const orders = await getAllOrders();
   return (
