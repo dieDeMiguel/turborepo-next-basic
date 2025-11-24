@@ -1,5 +1,5 @@
 import { defineQuery } from 'next-sanity';
-import { sanityFetch } from '../live';
+import { sanityFetch } from "../live";
 
 export const getProductsByCategory = async (categorySlug: string) => {
   const PRODUCTS_BY_CATEGORY_QUERY = defineQuery(`
@@ -10,11 +10,11 @@ export const getProductsByCategory = async (categorySlug: string) => {
   `);
 
   try {
+    // Using sanityFetch for automatic live updates and tag-based revalidation
     const products = await sanityFetch({
       query: PRODUCTS_BY_CATEGORY_QUERY,
       params: { categorySlug },
     });
-
     return products.data || [];
   } catch (error) {
     console.error('Error fetching products by category:', error);

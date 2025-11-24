@@ -1,7 +1,6 @@
 import { defineQuery } from 'next-sanity'
-import { sanityFetch } from '../live'
+import { sanityFetch } from "../live";
 import { PageContent } from '@/types/types';
-
 
 export const getPageBySlug = async (slug: string): Promise<PageContent | null> => {
   const PAGE_QUERY = defineQuery(`
@@ -22,6 +21,7 @@ export const getPageBySlug = async (slug: string): Promise<PageContent | null> =
   `);
 
   try {
+    // Using sanityFetch for automatic live updates and tag-based revalidation
     const page = await sanityFetch({
       query: PAGE_QUERY,
       params: { slug },
