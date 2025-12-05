@@ -6,7 +6,7 @@ This monorepo contains the **Shopr E-Commerce App** and **Operations App**, powe
 
 - **sanity-e-commerce**: The main e-commerce application using **Sanity CMS**, **Stripe** for payments, and **Clerk** for authentication.
 - **operations-app**: A supporting app for monitoring operations, fetching data via **Sanity**, and providing backend insights.
-- `@repo/ui`: Centralized UI component library powered by **shadcn/ui** - Shared accessible components, utilities, and design system
+- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
 - `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
 - `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
 
@@ -133,4 +133,4 @@ This will authenticate the Turborepo CLI with your [Vercel account](https://verc
 - **Sanity Insights**: View and manage operational data via **Sanity**.
 - **Shared Environment**: Leverages shared configurations and packages for consistency.
 
-License This project is licensed under the MIT License. Sanity-e-commerce project copyright 
+License This project is licensed under the MIT License. Sanity-e-commerce project copyright belongs to: <https://www.papareact.com>
