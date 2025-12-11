@@ -2,7 +2,7 @@
 
 This monorepo contains the **Shopr E-Commerce App** and **Operations App**, powered by **Turborepo**. These apps leverage modern web technologies such as **Next.js**, **Sanity**, **Stripe**, **Clerk**, and more, ensuring a seamless development and production experience.
 
-![Sanity E-Commerce](apps/sanity-e-commerce/app/opengraph-image.jpg)### Apps and Packages
+### Apps and Packages
 
 - **sanity-e-commerce**: The main e-commerce application using **Sanity CMS**, **Stripe** for payments, and **Clerk** for authentication.
 - **operations-app**: A supporting app for monitoring operations, fetching data via **Sanity**, and providing backend insights.
@@ -133,4 +133,4 @@ This will authenticate the Turborepo CLI with your [Vercel account](https://verc
 - **Sanity Insights**: View and manage operational data via **Sanity**.
 - **Shared Environment**: Leverages shared configurations and packages for consistency.
 
-License This project is licensed under the MIT License. Sanity-e-commerce project copyright belongs to: <https://www.papareact.com>
+License This project is licensed under the MIT License. Sanity-e-commerce project copyright belongs to: https://www.papareact.com
