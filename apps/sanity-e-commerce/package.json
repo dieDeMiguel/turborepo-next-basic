@@ -10,8 +10,8 @@
     "typegen": "pnpm npx sanity@latest schema extract && pnpm npx sanity@latest typegen generate"
   },
   "dependencies": {
-    "@clerk/clerk-react": "^5.20.2",
-    "@clerk/nextjs": "^6.0.2",
+    "@clerk/clerk-react": "^5.61.3",
+    "@clerk/nextjs": "^6.39.2",
     "@opentelemetry/api": "^1.9.0",
     "@opentelemetry/api-logs": "^0.52.1",
     "@opentelemetry/instrumentation": "^0.52.1",
@@ -31,19 +31,19 @@
     "@vercel/functions": "^1.5.2",
     "@vercel/otel": "^1.12.0",
     "@vercel/speed-insights": "^1.1.0",
-    "@vercel/toolbar": "^0.1.38",
+    "@vercel/toolbar": "^0.1.40",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
     "flags": "^4.0.1",
     "framer-motion": "^11.11.11",
     "lucide-react": "^0.454.0",
-    "next": "16.0.10",
+    "next": "^16.2.4",
     "next-sanity": "^9.8.8",
     "next-themes": "^0.4.6",
     "nodemailer": "^6.9.16",
-    "react": "19.2.0",
-    "react-dom": "19.2.0",
+    "react": "19.2.5",
+    "react-dom": "19.2.5",
     "sanity": "^3.62.3",
     "server-only": "^0.0.1",
     "stripe": "^17.3.1",
@@ -59,15 +59,9 @@
     "@types/react": "19.2.7",
     "@types/react-dom": "19.2.3",
     "eslint": "^8",
-    "eslint-config-next": "16.0.7",
+    "eslint-config-next": "^16.2.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
-  },
-  "pnpm": {
-    "overrides": {
-      "@types/react": "19.2.7",
-      "@types/react-dom": "19.2.3"
-    }
   }
 }

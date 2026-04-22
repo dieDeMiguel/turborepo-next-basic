@@ -1,4 +1,3 @@
-// @ts-expect-error React 19 RC compatibility issue with @types/react 18
 import React from 'react'
 
 export const metadata = {
