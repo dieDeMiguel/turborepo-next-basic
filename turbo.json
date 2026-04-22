@@ -4,7 +4,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*", "env:NODE_ENV"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": [".next/**", "!.next/cache/**"],
       "env": [
         "STRIPE_SECRET_KEY",

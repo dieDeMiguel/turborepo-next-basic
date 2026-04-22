@@ -1,6 +1,6 @@
 {
   "framework": "nextjs",
-  "buildCommand": "cd ../.. && pnpm build --filter=operations-app",
+  "buildCommand": "cd ../.. && pnpm build --filter=sanity-e-commerce",
   "installCommand": "cd ../.. && pnpm install",
   "outputDirectory": ".next"
 }
