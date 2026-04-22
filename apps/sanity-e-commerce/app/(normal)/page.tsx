@@ -59,7 +59,7 @@ export default async function Page() {
         <p className="text-sm font-medium">🚀 Cache Components + Sanity CMS - Next.js 16 - Deployed via Vercel CI/CD</p>
       </div>
       
-      <div className="container mx-auto flex flex-col items-center justify-center px-4">
+      <div className="container mx-auto flex flex-col items-center justify-center gap-8 px-4">
         {/* Cached Sanity Products - included in static shell */}
         <Suspense fallback={<LoadingProducts />}>
           <CachedProductsSection />
